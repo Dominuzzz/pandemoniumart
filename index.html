@@ -5,30 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dominus | Key Art & Visual Development</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #080808; color: #f2f2f2; font-family: sans-serif; }
-        .nav-link { opacity: 0.5; transition: 0.3s; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; }
-        .nav-link:hover { opacity: 1; }
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Inter', sans-serif; height: 100vh; display: flex; flex-direction: column; }
+        .nav-link { opacity: 0.4; transition: 0.3s; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; }
+        .nav-link:hover { opacity: 1; color: #fff; }
+        .accent-box { border: 1px solid rgba(255,255,255,0.1); transition: 0.4s ease; }
+        .accent-box:hover { border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.02); }
     </style>
 </head>
-<body>
-    <nav class="flex justify-between items-center px-10 py-12">
-        <h1 class="text-2xl font-black uppercase italic tracking-tighter">Dominus</h1>
-        <div class="space-x-8">
-            <a href="#" class="nav-link">Work</a>
-            <a href="#" class="nav-link">About</a>
-            <a href="mailto:contact@pandemoniumart.net" class="nav-link border border-white/20 px-4 py-2">Contact</a>
+<body class="selection:bg-white selection:text-black">
+
+    <nav class="flex flex-col md:flex-row justify-between items-baseline px-12 py-16">
+        <div>
+            <h1 class="text-4xl font-black uppercase italic tracking-tighter leading-none">Dominus</h1>
+            <p class="text-[9px] uppercase tracking-[0.5em] opacity-30 mt-2 text-white">Key Art Artist & Art Director</p>
+        </div>
+        <div class="flex gap-10 mt-8 md:mt-0">
+            <a href="https://www.artstation.com/dominus" target="_blank" class="nav-link text-white opacity-100">ArtStation</a>
+            <a href="https://www.dropbox.com/scl/fi/4alyfhvdh7pyo4umm74qd/Alexandru-Negoita-resume-2026.pdf?rlkey=o6fnd4hr60gk0kyu27vfek1cd&dl=0" target="_blank" class="nav-link">Download CV</a>
+            <a href="mailto:contact@pandemoniumart.net" class="nav-link border border-white/10 px-4 py-2 -mt-2">Inquire</a>
         </div>
     </nav>
 
-    <main class="px-10 py-20 text-center">
-        <h2 class="text-5xl font-bold tracking-tight mb-4">Portfolio Rebuilding</h2>
-        <p class="opacity-40 uppercase tracking-[0.5em] text-xs">High-End Key Art & Visual Development</p>
-        
-        <div class="mt-20 grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="bg-zinc-900 aspect-video flex items-center justify-center text-zinc-800 uppercase tracking-widest text-xs">Image Loading...</div>
-            <div class="bg-zinc-900 aspect-video flex items-center justify-center text-zinc-800 uppercase tracking-widest text-xs">Image Loading...</div>
+    <main class="flex-grow flex flex-col justify-center px-12 pb-20">
+        <div class="max-w-2xl">
+            <h2 class="text-5xl md:text-7xl font-black uppercase italic tracking-tighter mb-8 leading-[0.9]">Portfolio <br><span class="opacity-20 text-white">Rebuilding.</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <a href="https://www.artstation.com/dominus" target="_blank" class="accent-box p-8 group">
+                    <p class="text-[10px] uppercase tracking-widest opacity-40 mb-2">Current Portfolio</p>
+                    <h3 class="text-xl font-bold uppercase tracking-tight group-hover:translate-x-2 transition-transform">Visit ArtStation &rarr;</h3>
+                </a>
+
+                <a href="https://www.dropbox.com/scl/fi/4alyfhvdh7pyo4umm74qd/Alexandru-Negoita-resume-2026.pdf?rlkey=o6fnd4hr60gk0kyu27vfek1cd&dl=0" target="_blank" class="accent-box p-8 group">
+                    <p class="text-[10px] uppercase tracking-widest opacity-40 mb-2">Experience & CV</p>
+                    <h3 class="text-xl font-bold uppercase tracking-tight group-hover:translate-x-2 transition-transform">Download Resume &rarr;</h3>
+                </a>
+            </div>
+
+            <p class="mt-12 text-sm opacity-40 max-w-md leading-relaxed uppercase tracking-widest text-[10px]">
+                Currently migrating to a new high-performance platform to better showcase upcoming Key Art and Visual Development projects. 
+            </p>
         </div>
     </main>
+
+    <footer class="p-12 border-t border-white/5 opacity-20 text-[9px] uppercase tracking-[0.4em] flex justify-between">
+        <div>&copy; 2026 Dominus Pandemonium Art</div>
+        <div class="hidden md:block">Stockholm, Sweden</div>
+    </footer>
+
 </body>
 </html>
