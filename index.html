@@ -5,33 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alexandru Negoita | Art Direction | Visual Development | Concept Art</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
     <style>
         body { 
-            /* This line adds the background image with a dark overlay for readability */
             background: linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.85)), url('images/bg.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
             color: #e5e5e5; 
-            font-family: 'Inter', sans-serif; 
+            font-family: 'DM Sans', sans-serif; 
             min-height: 100vh; 
             display: flex; 
             flex-direction: column; 
+            overflow-x: hidden;
         }
+
+        /* The Custom Font Style for your Name and Main Header */
+        .display-font {
+            font-family: 'DM Sans', sans-serif;
+            text-transform: uppercase;
+            font-style: italic;
+            font-weight: 1000; /* Maximum weight for impact */
+            letter-spacing: -0.05em;
+            line-height: 0.85;
+        }
+
         .nav-link { opacity: 0.4; transition: 0.3s; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; }
         .nav-link:hover { opacity: 1; color: #fff; }
-        .accent-box { border: 1px solid rgba(255,255,255,0.1); transition: 0.4s ease; background: rgba(0,0,0,0.2); backdrop-filter: blur(5px); }
-        .accent-box:hover { border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.02); }
+        
+        .accent-box { 
+            border: 1px solid rgba(255,255,255,0.1); 
+            transition: 0.4s ease; 
+            background: rgba(0,0,0,0.2); 
+            backdrop-filter: blur(8px); 
+        }
+        .accent-box:hover { 
+            border: 1px solid rgba(255,255,255,0.4); 
+            background: rgba(255,255,255,0.05); 
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body class="selection:bg-white selection:text-black">
 
     <nav class="flex flex-col md:flex-row justify-between items-baseline px-12 py-16">
         <div>
-            <h1 class="text-4xl font-black uppercase italic tracking-tighter leading-none">Alexandru Negoita</h1>
-            <p class="text-[9px] uppercase tracking-[0.5em] opacity-30 mt-2 text-white">Art Direction | Visual Development | Concept Art</p>
+            <h1 class="display-font text-4xl">Alexandru Negoita</h1>
+            <p class="text-[9px] uppercase tracking-[0.5em] opacity-30 mt-2 text-white font-bold">Art Direction | Visual Development | Concept Art</p>
         </div>
         <div class="flex gap-10 mt-8 md:mt-0">
             <a href="https://dominus.artstation.com/" target="_blank" class="nav-link text-white opacity-100">ArtStation</a>
@@ -41,31 +62,12 @@
     </nav>
 
     <main class="flex-grow flex flex-col justify-center px-12 pb-20">
-        <div class="max-w-2xl">
-            <h2 class="text-5xl md:text-7xl font-black uppercase italic tracking-tighter mb-8 leading-[0.9]">Portfolio <br><span class="opacity-20 text-white font-black italic">Rebuilding.</span></h2>
+        <div class="max-w-4xl">
+            <h2 class="display-font text-6xl md:text-9xl mb-10">
+                Portfolio <br>
+                <span class="opacity-10">Rebuilding.</span>
+            </h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl">
                 <a href="https://dominus.artstation.com/" target="_blank" class="accent-box p-8 group">
-                    <p class="text-[10px] uppercase tracking-widest opacity-40 mb-2">Visit ArtStation</p>
-                    <h3 class="text-xl font-bold uppercase tracking-tight group-hover:translate-x-2 transition-transform">View Portfolio &rarr;</h3>
-                </a>
-
-                <a href="https://www.dropbox.com/scl/fi/4alyfhvdh7pyo4umm74qd/Alexandru-Negoita-resume-2026.pdf?rlkey=o6fnd4hr60gk0kyu27vfek1cd&dl=0" target="_blank" class="accent-box p-8 group">
-                    <p class="text-[10px] uppercase tracking-widest opacity-40 mb-2">Experience & CV</p>
-                    <h3 class="text-xl font-bold uppercase tracking-tight group-hover:translate-x-2 transition-transform">Download Resume &rarr;</h3>
-                </a>
-            </div>
-
-            <p class="mt-12 text-sm opacity-40 max-w-md leading-relaxed uppercase tracking-widest text-[10px]">
-                Currently migrating to a new platform to better showcase my portfolio. 
-            </p>
-        </div>
-    </main>
-
-    <footer class="p-12 border-t border-white/5 opacity-20 text-[9px] uppercase tracking-[0.4em] flex justify-between">
-        <div>&copy; 2026 Pandemonium Art</div>
-        <div class="hidden md:block">Stockholm, Sweden</div>
-    </footer>
-
-</body>
-</html>
+                    <p class="text-[10px] uppercase tracking-widest opacity-40 mb-2 font-bold">Visit ArtStation</p>
