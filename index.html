@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alexandru Negoita | Art Direction | Visual Development | Concept Art </title>
+    <title>Alexandru Negoita | Art Direction | Visual Development | Concept Art</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&family=DM+Sans:ital,wght@1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap" rel="stylesheet">
     <style>
         body { 
+            /* This line adds the background image with a dark overlay for readability */
             background: linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.85)), url('images/bg.jpg');
             background-size: cover;
             background-position: center;
@@ -15,18 +16,10 @@
             background-attachment: fixed;
             color: #e5e5e5; 
             font-family: 'Inter', sans-serif; 
-            height: 100vh; 
+            min-height: 100vh; 
             display: flex; 
             flex-direction: column; 
         }
-        
-        /* Applied only to the two specific places you requested */
-        .dm-sans-header {
-            font-family: 'DM Sans', sans-serif;
-            font-weight: 900;
-            font-style: italic;
-        }
-
         .nav-link { opacity: 0.4; transition: 0.3s; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; }
         .nav-link:hover { opacity: 1; color: #fff; }
         .accent-box { border: 1px solid rgba(255,255,255,0.1); transition: 0.4s ease; background: rgba(0,0,0,0.2); backdrop-filter: blur(5px); }
@@ -37,7 +30,7 @@
 
     <nav class="flex flex-col md:flex-row justify-between items-baseline px-12 py-16">
         <div>
-            <h1 class="dm-sans-header text-4xl uppercase tracking-tighter leading-none">Alexandru Negoita</h1>
+            <h1 class="text-4xl font-black uppercase italic tracking-tighter leading-none">Alexandru Negoita</h1>
             <p class="text-[9px] uppercase tracking-[0.5em] opacity-30 mt-2 text-white">Art Direction | Visual Development | Concept Art</p>
         </div>
         <div class="flex gap-10 mt-8 md:mt-0">
@@ -49,4 +42,30 @@
 
     <main class="flex-grow flex flex-col justify-center px-12 pb-20">
         <div class="max-w-2xl">
-            <h2 class="dm-sans-header text-5xl md:text-7xl uppercase tracking-tighter mb-8 leading-[0.9]">Portfolio <br
+            <h2 class="text-5xl md:text-7xl font-black uppercase italic tracking-tighter mb-8 leading-[0.9]">Portfolio <br><span class="opacity-20 text-white font-black italic">Rebuilding.</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <a href="https://dominus.artstation.com/" target="_blank" class="accent-box p-8 group">
+                    <p class="text-[10px] uppercase tracking-widest opacity-40 mb-2">Visit ArtStation</p>
+                    <h3 class="text-xl font-bold uppercase tracking-tight group-hover:translate-x-2 transition-transform">View Portfolio &rarr;</h3>
+                </a>
+
+                <a href="https://www.dropbox.com/scl/fi/4alyfhvdh7pyo4umm74qd/Alexandru-Negoita-resume-2026.pdf?rlkey=o6fnd4hr60gk0kyu27vfek1cd&dl=0" target="_blank" class="accent-box p-8 group">
+                    <p class="text-[10px] uppercase tracking-widest opacity-40 mb-2">Experience & CV</p>
+                    <h3 class="text-xl font-bold uppercase tracking-tight group-hover:translate-x-2 transition-transform">Download Resume &rarr;</h3>
+                </a>
+            </div>
+
+            <p class="mt-12 text-sm opacity-40 max-w-md leading-relaxed uppercase tracking-widest text-[10px]">
+                Currently migrating to a new platform to better showcase my portfolio. 
+            </p>
+        </div>
+    </main>
+
+    <footer class="p-12 border-t border-white/5 opacity-20 text-[9px] uppercase tracking-[0.4em] flex justify-between">
+        <div>&copy; 2026 Pandemonium Art</div>
+        <div class="hidden md:block">Stockholm, Sweden</div>
+    </footer>
+
+</body>
+</html>
