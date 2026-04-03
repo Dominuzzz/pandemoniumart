@@ -47,60 +47,26 @@
     </footer>
 
     <script>
+        // Robust Image Pathing Function
+        const formatImg = (url) => {
+            if (!url) return '';
+            if (url.startsWith('http')) return url;
+            let path = url.replace(/^\/+/, ''); 
+            return '/' + path; 
+        };
+
         async function initPage() {
-            // 1. LOAD SLIDESHOW (Independent)
+            // 1. LOAD SLIDESHOW
             try {
                 const homeRes = await fetch('content/home.json');
                 const homeData = await homeRes.json();
                 const container = document.getElementById('slideshow-container');
+                
                 if (homeData.slides && homeData.slides.length > 0) {
-                    homeData.slides.forEach((imgUrl, index) => {
-                        const img = document.createElement('img');
-                        img.src = imgUrl.startsWith('http') ? imgUrl : '/' + imgUrl;
-                        img.className = index === 0 ? 'slide active' : 'slide';
-                        container.appendChild(img);
-                    });
-                    const slides = document.querySelectorAll('.slide');
-                    if (slides.length > 1) {
-                        let currentSlide = 0;
-                        setInterval(() => {
-                            slides[currentSlide].classList.remove('active');
-                            currentSlide = (currentSlide + 1) % slides.length;
-                            slides[currentSlide].classList.add('active');
-                        }, 5000);
-                    }
-                }
-            } catch (e) { console.warn("Slideshow failed to load:", e); }
-
-            // 2. LOAD NAVIGATION (Independent)
-            try {
-                const settingsRes = await fetch('content/settings.json');
-                const settings = await settingsRes.json();
-
-                document.getElementById('link-about').innerText = settings.label_about || "About";
-                document.getElementById('label-personal').innerText = settings.label_personal || "Personal";
-                document.getElementById('label-games').innerText = settings.label_games || "Games";
-                document.getElementById('link-shop').innerText = settings.label_shop || "Shop";
-                document.getElementById('link-shop').href = settings.shop_url || "#";
-
-                const dropPers = document.getElementById('drop-personal');
-                settings.nav_personal.forEach(proj => {
-                    dropPers.innerHTML += `<a href="project.html?type=personal&id=${proj.slug}" class="dropdown-item">${proj.label}</a>`;
-                });
-
-                const dropGames = document.getElementById('drop-games');
-                settings.nav_games.forEach(proj => {
-                    dropGames.innerHTML += `<a href="project.html?type=games&id=${proj.slug}" class="dropdown-item">${proj.label}</a>`;
-                });
-
-                const footSocials = document.getElementById('footer-socials');
-                settings.socials.forEach(s => {
-                    footSocials.innerHTML += `<a href="${s.url}" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors" style="text-shadow: 0px 2px 5px rgba(0,0,0,0.8);">${s.platform}</a>`;
-                });
-            } catch (e) { console.warn("Navigation failed to load:", e); }
-        }
-
-        document.addEventListener("DOMContentLoaded", initPage);
-    </script>
-</body>
-</html>
+                    let slideUrls = [...homeData.slides];
+                    
+                    // Logic: Keep first image at index 0, shuffle the rest
+                    if (slideUrls.length > 2) {
+                        const firstImage = slideUrls.shift();
+                        for (let i = slideUrls.length - 1; i > 0; i--) {
+                            const j = Math.floor(Math.random
