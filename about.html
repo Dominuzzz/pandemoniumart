@@ -20,7 +20,7 @@
         .resume-company { width: 160px; opacity: 0.5; font-size: 13px; flex-shrink: 0; font-weight: 700;}
         .resume-text { font-size: 15px; font-weight: 400; line-height: 1.6;}
         .resume-projects { font-size: 11px; color: #888; margin-top: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700;}
-        #cms-bio { white-space: pre-wrap; } /* This ensures bio line breaks are respected */
+        #cms-bio { white-space: pre-wrap; }
     </style>
 </head>
 <body class="w-full relative">
@@ -109,10 +109,12 @@
                 const response = await fetch('content/about.json');
                 const data = await response.json();
                 
+                // SMARTER PATHING: Removes double slashes and handles leading slashes automatically
                 const formatImg = (url) => {
                     if (!url) return '';
                     if (url.startsWith('http')) return url;
-                    return '/' + url.replace(/^\/+/, ''); 
+                    let path = url.replace(/^\/+/, ''); // Remove all leading slashes
+                    return '/' + path; // Add one single leading slash
                 };
 
                 const nameEl = document.getElementById('cms-name');
@@ -132,34 +134,34 @@
                     rBtn.classList.remove('hidden');
                 }
 
-                const socialsContainer = document.getElementById('cms-socials');
-                socialsContainer.innerHTML = '';
-                if(data.socials) { data.socials.forEach(s => { socialsContainer.innerHTML += `<a href="${s.url}" target="_blank" class="text-[11px] font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-colors w-max">${s.platform} &rarr;</a>`; }); }
+                const socCont = document.getElementById('cms-socials');
+                socCont.innerHTML = '';
+                if(data.socials) { data.socials.forEach(s => { socCont.innerHTML += `<a href="${s.url}" target="_blank" class="text-[11px] font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-colors w-max">${s.platform} &rarr;</a>`; }); }
 
-                const expContainer = document.getElementById('cms-experience');
-                expContainer.innerHTML = '';
+                const expCont = document.getElementById('cms-experience');
+                expCont.innerHTML = '';
                 if(data.experience) { data.experience.forEach(i => {
-                    let projectsHtml = i.projects ? `<div class="resume-projects">${i.projects}</div>` : '';
-                    expContainer.innerHTML += `<div class="resume-item"><div class="resume-company">${i.company}</div><div><div class="resume-text text-gray-200">${i.title}</div>${projectsHtml}</div></div>`;
+                    let projHtml = i.projects ? `<div class="resume-projects">${i.projects}</div>` : '';
+                    expCont.innerHTML += `<div class="resume-item"><div class="resume-company">${i.company}</div><div><div class="resume-text text-gray-200">${i.title}</div>${projHtml}</div></div>`;
                 }); }
 
-                const clientsContainer = document.getElementById('cms-clients');
-                clientsContainer.innerHTML = '';
-                if(data.clients) { data.clients.forEach(c => { clientsContainer.innerHTML += `<div>${c.name || c}</div>`; }); }
+                const cliCont = document.getElementById('cms-clients');
+                cliCont.innerHTML = '';
+                if(data.clients) { data.clients.forEach(c => { cliCont.innerHTML += `<div>${c.name || c}</div>`; }); }
 
-                const pubContainer = document.getElementById('cms-publications');
-                pubContainer.innerHTML = '';
-                if(data.publications) { data.publications.forEach(i => { pubContainer.innerHTML += `<div class="resume-item"><div class="resume-company">${i.company}</div><div class="resume-text text-gray-200">${i.title}</div></div>`; }); }
+                const pubCont = document.getElementById('cms-publications');
+                pubCont.innerHTML = '';
+                if(data.publications) { data.publications.forEach(i => { pubCont.innerHTML += `<div class="resume-item"><div class="resume-company">${i.company}</div><div class="resume-text text-gray-200">${i.title}</div></div>`; }); }
 
-                const eduContainer = document.getElementById('cms-education');
-                eduContainer.innerHTML = '';
-                if(data.education) { data.education.forEach(i => { eduContainer.innerHTML += `<div class="resume-item"><div class="resume-company">${i.company}</div><div class="resume-text text-gray-200">${i.title}</div></div>`; }); }
+                const eduCont = document.getElementById('cms-education');
+                eduCont.innerHTML = '';
+                if(data.education) { data.education.forEach(i => { eduCont.innerHTML += `<div class="resume-item"><div class="resume-company">${i.company}</div><div class="resume-text text-gray-200">${i.title}</div></div>`; }); }
 
                 const bImg = document.getElementById('cms-bottom-image');
                 bImg.src = formatImg(data.bottom_image);
                 bImg.style.width = data.bottom_image_width || '100%';
-                const bWrapper = document.getElementById('cms-bottom-image-wrapper');
-                bWrapper.style.justifyContent = data.bottom_image_align === 'left' ? 'flex-start' : (data.bottom_image_align === 'right' ? 'flex-end' : 'center');
+                const bWrap = document.getElementById('cms-bottom-image-wrapper');
+                bWrap.style.justifyContent = data.bottom_image_align === 'left' ? 'flex-start' : (data.bottom_image_align === 'right' ? 'flex-end' : 'center');
 
             } catch (e) { console.error("CMS Load Error:", e); }
         });
