@@ -2,8 +2,6 @@ backend:
   name: github
   repo: Dominuzzz/pandemoniumart
   branch: main
-  auth_type: pkce
-  app_id: Ov23li8zvtXnRyYfy41R
 
 # This tells the dashboard where to put new images you upload
 media_folder: "images"
