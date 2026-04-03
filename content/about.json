@@ -1,0 +1,21 @@
+{
+  "profile_image": "https://via.placeholder.com/600x600/111111/444444?text=Profile+Photo",
+  "bio": "I am a visual development artist and art director based in Stockholm, Sweden. With over a decade of experience in the entertainment industry, I specialize in world-building, concept art, and establishing visual pillars for AAA game titles.",
+  "experience": [
+    {"year": "2023 - Present", "title": "Art Director at Pandemonium Studios"},
+    {"year": "2018 - 2023", "title": "Senior Concept Artist at Example Games"}
+  ],
+  "clients": [
+    "Wizards of the Coast",
+    "Blizzard Entertainment",
+    "NetEase Games"
+  ],
+  "publications": [
+    {"year": "2024", "title": "Spectrum 30: The Best in Contemporary Fantastic Art"},
+    {"year": "2022", "title": "ImagineFX Magazine - Masterclass Feature"}
+  ],
+  "education": [
+    {"year": "2015", "title": "BA in Illustration - Concept Art Academy"}
+  ],
+  "bottom_image": "https://via.placeholder.com/1920x600/111111/444444?text=Long+Horizontal+Artwork"
+}
