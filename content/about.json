@@ -7,19 +7,19 @@
   "socials": [
     {
       "platform": "Instagram",
-      "url": "#"
+      "url": "http://instagram.com/pandemoniumarts"
     },
     {
       "platform": "BlueSky",
-      "url": "#"
+      "url": "http://dominuz.bsky.social/"
     },
     {
       "platform": "LinkedIn",
-      "url": "#"
+      "url": "https://www.linkedin.com/in/dominus"
     },
     {
       "platform": "ArtStation",
-      "url": "#"
+      "url": "https://www.artstation.com/dominus"
     }
   ],
   "title_experience": "Experience",
@@ -30,16 +30,37 @@
       "projects": "○ Scavenger   ○ Sküllbox   ○ Scavenger: Crimson Catalyst"
     },
     {
-      "company": "Example Games",
-      "title": "Senior Concept Artist (2018 - 2023)",
+      "company": "Resolution Games",
+      "title": "Lead concept artist and art direction.",
       "projects": "○ Demeo X Dungeons & Dragons: Battlemarked   ○ Demeo: Reign of Madness   ○ Demeo Battles"
+    },
+    {
+      "company": "Lavapotion",
+      "title": "Created concept art for the game characters, portrait illustrations, skills and spells icons, banners, and menu art.",
+      "projects": "○ Songs of Conquest"
+    },
+    {
+      "company": "King",
+      "title": "Provided art direction, mock-ups, concepts, and assets. Game prototyping. Art team recruiting and coaching. Production pipeline optimization.",
+      "projects": "○ Candy Crush   ○ Bubble Witch Saga  ○ Amazing Garden Stampede"
+    },
+    {
+      "company": "EA",
+      "title": "Provided art direction, mock-ups, concepts, and assets. Game prototyping. Art team recruiting and coaching. Production pipeline optimization.",
+      "projects": "○ Unreleased projects   ○ Fifa 11"
+    },
+    {
+      "company": "Gameloft",
+      "title": "Created concept art, game assets, mock-ups, UI, and visual dev.",
+      "projects": "○ Assassin’s Creed DS  ○ Brothers in Arms DS  ○ N.O.V.A. Legacy  ○ Ferrari GT: Evolution"
     }
   ],
   "title_clients": "Freelance Clients",
   "clients": [
     "Wizards of the Coast",
-    "Blizzard Entertainment",
-    "NetEase Games"
+    "Nightdive Studios",
+    "New Blood Interactive",
+    "Hunters Entertainment"
   ],
   "title_publications": "Publications",
   "publications": [
@@ -49,14 +70,26 @@
     },
     {
       "company": "ImagineFX",
+      "title": "Issues 48, 30, 12"
+    },
+    {
+      "company": "Ballistic",
+      "title": "Art Fundamentals"
+    },
+    {
+      "company": "3D Total",
       "title": "Masterclass Feature (2022)"
     }
   ],
   "title_education": "Education",
   "education": [
     {
-      "company": "Concept Art Academy",
-      "title": "BA in Illustration (2015)"
+      "company": "Hariclea Darclee Art School",
+      "title": "Braila, 2001"
+    },
+    {
+      "company": "THU",
+      "title": "Troa, 2016 & Malta, 2018"
     }
   ],
   "bottom_image": "/images/logos-1.png",
