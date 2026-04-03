@@ -75,11 +75,7 @@
 </head>
 <body class="h-screen w-full relative">
 
-    <div id="slideshow-container">
-        <img src="https://via.placeholder.com/1920x1080/050505/333333?text=Hero+Image+01" class="slide active" alt="Hero 1">
-        <img src="https://via.placeholder.com/1920x1080/111111/444444?text=Hero+Image+02" class="slide" alt="Hero 2">
-        <img src="https://via.placeholder.com/1920x1080/0a0a0a/222222?text=Hero+Image+03" class="slide" alt="Hero 3">
-    </div>
+    <div id="slideshow-container"></div>
     
     <div class="overlay"></div>
 
@@ -126,17 +122,38 @@
     </footer>
 
     <script>
-        const slides = document.querySelectorAll('.slide');
-        let currentSlide = 0;
+        document.addEventListener("DOMContentLoaded", async () => {
+            try {
+                // Fetch the data file your dashboard creates
+                const response = await fetch('content/home.json');
+                const data = await response.json();
+                const container = document.getElementById('slideshow-container');
+                
+                // If there are images, create them on the page
+                if (data.slides && data.slides.length > 0) {
+                    data.slides.forEach((imgUrl, index) => {
+                        const img = document.createElement('img');
+                        // Make sure the image path formats correctly whether it's an uploaded file or a URL link
+                        img.src = imgUrl.startsWith('http') ? imgUrl : (imgUrl.startsWith('/') ? imgUrl : '/' + imgUrl);
+                        img.className = index === 0 ? 'slide active' : 'slide';
+                        container.appendChild(img);
+                    });
 
-        function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }
-
-        // Crossfade every 5 seconds
-        setInterval(nextSlide, 5000);
+                    // Start the crossfade animation if there's more than 1 image
+                    const slides = document.querySelectorAll('.slide');
+                    if (slides.length > 1) {
+                        let currentSlide = 0;
+                        setInterval(() => {
+                            slides[currentSlide].classList.remove('active');
+                            currentSlide = (currentSlide + 1) % slides.length;
+                            slides[currentSlide].classList.add('active');
+                        }, 5000);
+                    }
+                }
+            } catch (error) {
+                console.error("Error loading CMS data:", error);
+            }
+        });
     </script>
 </body>
 </html>
