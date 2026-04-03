@@ -1,59 +1,36 @@
 {
-  "profile_image": "/images/picture-1.jpg",
-  "bio": "Hi, I’m Alexandru Negoiță, a Stockholm-based concept artist and illustrator with 20 years of experience in the video game industry. I’ve worked as an art director and lead concept artist, creating a wide range of game art for established studios, with a strong foundation and the ability to adapt to diverse visual styles.\n\nI specialize in world-building, visual development, concept art, and art direction, as well as in creating cinematic key art and iconic imagery that defines the brand and narrative of world-class video games. \n\nIn 2019, I co-founded Shardstone Assembly and published  Scavenger, an original D&D campaign sourcebook. My illustration work has been published internationally in Spectrum, Exposé, ImagineFX and EDGE.",
-  "resume_pdf": "/images/Alexandru Negoita resume.pdf",
+  "profile_image": "https://via.placeholder.com/600x600/111111/444444?text=Profile+Photo",
+  "name": "Alexandru Negoita",
+  "name_size": "30px",
+  "bio": "I am a visual development artist and art director based in Stockholm, Sweden. With over a decade of experience in the entertainment industry, I specialize in world-building, concept art, and establishing visual pillars for AAA game titles.",
+  "resume_pdf": "",
   "socials": [
-    {
-      "platform": "Instagram",
-      "url": "http://instagram.com/pandemoniumarts"
-    },
-    {
-      "platform": "BlueSky",
-      "url": "http://dominuz.bsky.social/"
-    },
-    {
-      "platform": "LinkedIn",
-      "url": "https://www.linkedin.com/in/dominus"
-    },
-    {
-      "platform": "ArtStation",
-      "url": "https://www.artstation.com/dominus"
-    }
+    {"platform": "Instagram", "url": "#"},
+    {"platform": "BlueSky", "url": "#"},
+    {"platform": "LinkedIn", "url": "#"},
+    {"platform": "ArtStation", "url": "#"}
   ],
+  "title_experience": "Experience",
   "experience": [
-    {
-      "company": "Shardstone Assembly",
-      "title": "Co-creator of the Scavenger and Sküllbox IPs, worldbuilding, concept art, illustration, visual dev, layout design, art direction, and social media.  ○ Scavenger   ○ Sküllbox   ○ Scavenger: Crimson Catalyst"
-    },
-    {
-      "company": "Resolution Games",
-      "title": "Lead Concept Artist for Demeo X Dungeons & Dragons: Battlemarked   ○ Demeo: Reign of Madness   ○ Demeo Battles"
-    }
+    {"company": "Pandemonium Studios", "title": "Art Director (2023 - Present)", "projects": "Project Alpha, Unannounced AAA Title"},
+    {"company": "Example Games", "title": "Senior Concept Artist (2018 - 2023)", "projects": "Gloomwood, Thief, Demeo"}
   ],
+  "title_clients": "Freelance Clients",
   "clients": [
     "Wizards of the Coast",
-    "Nightdive Studios",
-    "New Blood Interactive",
-    "Hunters Entertainment",
-    "Elvelon"
+    "Blizzard Entertainment",
+    "NetEase Games"
   ],
+  "title_publications": "Publications",
   "publications": [
-    {
-      "company": "Spectrum",
-      "title": "Spectrum 30: The Best in Contemporary Fantastic Art (2024)"
-    },
-    {
-      "company": "ImagineFX",
-      "title": "Masterclass Feature (2022)"
-    }
+    {"company": "Spectrum", "title": "Spectrum 30: The Best in Contemporary Fantastic Art (2024)"},
+    {"company": "ImagineFX", "title": "Masterclass Feature (2022)"}
   ],
+  "title_education": "Education",
   "education": [
-    {
-      "company": "Concept Art Academy",
-      "title": "BA in Illustration (2015)"
-    }
+    {"company": "Concept Art Academy", "title": "BA in Illustration (2015)"}
   ],
-  "bottom_image": "/images/logos-1.png",
+  "bottom_image": "https://via.placeholder.com/1920x600/111111/444444?text=Long+Horizontal+Artwork",
   "bottom_image_width": "100%",
   "bottom_image_align": "center"
 }
