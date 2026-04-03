@@ -29,15 +29,16 @@
             top: 100%; 
             left: -10px; 
             background: rgba(5,5,5,0.95); 
-            backdrop-filter: blur(10px); 
-            min-width: 160px; 
-            border: 1px solid rgba(255,255,255,0.05); 
+            backdrop-filter: blur(15px); 
+            min-width: 180px; 
+            border: 1px solid rgba(255,255,255,0.1); 
             padding: 10px 0; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         .dropdown:hover .dropdown-menu { display: block; }
         .dropdown-item { 
             display: block; 
-            padding: 10px 20px; 
+            padding: 12px 20px; 
             font-size: 10px; 
             text-transform: uppercase; 
             letter-spacing: 0.15em; 
@@ -52,7 +53,6 @@
         
         .resume-company { width: 160px; opacity: 0.5; font-size: 13px; flex-shrink: 0;}
         .resume-text { font-size: 15px; font-weight: 400;}
-        /* Styling for the new Projects row */
         .resume-projects { font-size: 11px; color: #888; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700;}
     </style>
 </head>
@@ -64,73 +64,55 @@
         </a>
         
         <div class="flex gap-10 mt-2">
-            <a href="about.html" class="nav-link text-white">About</a>
+            <a href="about.html" id="link-about" class="nav-link text-white">About</a>
             
             <div class="dropdown relative">
-                <span class="nav-link text-gray-400 pb-4 block">Personal</span>
-                <div class="dropdown-menu">
-                    <a href="#" class="dropdown-item">Project Alpha</a>
-                    <a href="#" class="dropdown-item">Sketches</a>
-                </div>
+                <span id="label-personal" class="nav-link text-gray-400 pb-4 block">Personal</span>
+                <div id="drop-personal" class="dropdown-menu"></div>
             </div>
 
             <div class="dropdown relative">
-                <span class="nav-link text-gray-400 pb-4 block">Games</span>
-                <div class="dropdown-menu">
-                    <a href="games.html" class="dropdown-item">Gloomwood</a>
-                    <a href="games.html" class="dropdown-item">Thief</a>
-                    <a href="games.html" class="dropdown-item">Demeo</a>
-                </div>
+                <span id="label-games" class="nav-link text-gray-400 pb-4 block">Games</span>
+                <div id="drop-games" class="dropdown-menu"></div>
             </div>
 
-            <a href="https://your-shop-link.com" target="_blank" class="nav-link text-gray-400">Shop</a>
+            <a href="#" id="link-shop" target="_blank" class="nav-link text-gray-400">Shop</a>
         </div>
     </nav>
 
     <main class="max-w-7xl mx-auto px-12 pt-40 pb-20 grid grid-cols-1 md:grid-cols-12 gap-16">
-        
         <div class="md:col-span-5">
             <div class="sticky top-40">
-                
                 <div class="w-full aspect-square overflow-hidden mb-8 border border-white/5">
                     <img id="cms-profile-image" src="" alt="Profile" class="w-full h-full object-cover transform hover:scale-105 transition duration-700">
                 </div>
-                
                 <h1 id="cms-name" class="font-black uppercase italic tracking-tighter mb-4 transition-all duration-300"></h1>
-                
                 <p id="cms-bio" class="text-sm leading-relaxed text-gray-400 mb-8"></p>
-                
                 <div class="flex gap-4 mb-10">
                     <a id="cms-resume-btn" href="#" target="_blank" class="border border-white/20 px-5 py-3 text-[10px] uppercase tracking-widest font-bold text-gray-300 hover:bg-white hover:text-black transition-colors hidden">Resume &darr;</a>
                     <a href="mailto:dominuz@gmail.com" class="border border-white/20 px-5 py-3 text-[10px] uppercase tracking-widest font-bold text-gray-300 hover:bg-white hover:text-black transition-colors">Contact</a>
                 </div>
-
                 <div id="cms-socials" class="flex flex-col gap-3"></div>
             </div>
         </div>
 
         <div class="md:col-span-7 pt-4 md:pl-8">
-            
             <div class="resume-section">
                 <h2 id="cms-title-experience" class="resume-title"></h2>
                 <div id="cms-experience"></div>
             </div>
-
             <div class="resume-section">
                 <h2 id="cms-title-clients" class="resume-title"></h2>
                 <div id="cms-clients" class="grid grid-cols-2 gap-y-4 gap-x-8 text-15px text-gray-300"></div>
             </div>
-
             <div class="resume-section">
                 <h2 id="cms-title-publications" class="resume-title"></h2>
                 <div id="cms-publications"></div>
             </div>
-
             <div class="resume-section">
                 <h2 id="cms-title-education" class="resume-title"></h2>
                 <div id="cms-education"></div>
             </div>
-
         </div>
     </main>
 
@@ -142,48 +124,56 @@
         <div class="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-600">
             &copy; 2026 Pandemonium Art
         </div>
-        
-        <div class="flex gap-8">
-            <a href="#" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Instagram</a>
-            <a href="#" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors">BlueSky</a>
-            <a href="#" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors">LinkedIn</a>
-            <a href="#" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors">ArtStation</a>
-        </div>
+        <div id="footer-socials" class="flex gap-8"></div>
     </footer>
 
     <script>
         document.addEventListener("DOMContentLoaded", async () => {
             try {
+                // 1. LOAD GLOBAL SETTINGS (Nav & Footer)
+                const settingsRes = await fetch('content/settings.json');
+                const settings = await settingsRes.json();
+
+                document.getElementById('link-about').innerText = settings.label_about || "About";
+                document.getElementById('label-personal').innerText = settings.label_personal || "Personal";
+                document.getElementById('label-games').innerText = settings.label_games || "Games";
+                document.getElementById('link-shop').innerText = settings.label_shop || "Shop";
+                document.getElementById('link-shop').href = settings.shop_url || "#";
+
+                const dropPers = document.getElementById('drop-personal');
+                settings.nav_personal.forEach(p => {
+                    dropPers.innerHTML += `<a href="project.html?type=personal&id=${p.slug}" class="dropdown-item">${p.label}</a>`;
+                });
+
+                const dropGames = document.getElementById('drop-games');
+                settings.nav_games.forEach(p => {
+                    dropGames.innerHTML += `<a href="project.html?type=games&id=${p.slug}" class="dropdown-item">${p.label}</a>`;
+                });
+
+                const footSocials = document.getElementById('footer-socials');
+                settings.socials.forEach(s => {
+                    footSocials.innerHTML += `<a href="${s.url}" target="_blank" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors">${s.platform}</a>`;
+                });
+
+                // 2. LOAD ABOUT DATA
                 const response = await fetch('content/about.json');
                 const data = await response.json();
-                
-                const formatImg = (url) => {
-                    if (!url) return '';
-                    return url.startsWith('http') ? url : (url.startsWith('/') ? url : '/' + url);
-                };
+                const formatImg = (url) => url && (url.startsWith('http') ? url : '/' + url);
 
-                // Basic Info & Typography
                 const nameEl = document.getElementById('cms-name');
                 nameEl.innerText = data.name || 'Alexandru Negoita';
                 nameEl.style.fontSize = data.name_size || '30px';
-
                 document.getElementById('cms-profile-image').src = formatImg(data.profile_image);
                 document.getElementById('cms-bio').innerText = data.bio;
 
-                // Section Titles
                 document.getElementById('cms-title-experience').innerText = data.title_experience || 'Experience';
                 document.getElementById('cms-title-clients').innerText = data.title_clients || 'Freelance Clients';
                 document.getElementById('cms-title-publications').innerText = data.title_publications || 'Publications';
                 document.getElementById('cms-title-education').innerText = data.title_education || 'Education';
 
-                // Resume Button
                 const resumeBtn = document.getElementById('cms-resume-btn');
-                if(data.resume_pdf) {
-                    resumeBtn.href = formatImg(data.resume_pdf);
-                    resumeBtn.classList.remove('hidden');
-                }
+                if(data.resume_pdf) { resumeBtn.href = formatImg(data.resume_pdf); resumeBtn.classList.remove('hidden'); }
 
-                // Social Links
                 const socialsContainer = document.getElementById('cms-socials');
                 if(data.socials) {
                     data.socials.forEach(social => {
@@ -191,65 +181,30 @@
                     });
                 }
 
-                // Experience (Now with nested Projects)
                 const expContainer = document.getElementById('cms-experience');
                 if(data.experience) {
                     data.experience.forEach(item => {
                         let projectsHtml = item.projects ? `<div class="resume-projects">${item.projects}</div>` : '';
-                        expContainer.innerHTML += `
-                            <div class="resume-item">
-                                <div class="resume-company">${item.company}</div>
-                                <div>
-                                    <div class="resume-text text-gray-200">${item.title}</div>
-                                    ${projectsHtml}
-                                </div>
-                            </div>
-                        `;
+                        expContainer.innerHTML += `<div class="resume-item"><div class="resume-company">${item.company}</div><div><div class="resume-text text-gray-200">${item.title}</div>${projectsHtml}</div></div>`;
                     });
                 }
 
-                // Clients
                 const clientsContainer = document.getElementById('cms-clients');
-                if(data.clients) {
-                    data.clients.forEach(client => {
-                        clientsContainer.innerHTML += `<div>${client.name || client}</div>`;
-                    });
-                }
+                if(data.clients) { data.clients.forEach(c => { clientsContainer.innerHTML += `<div>${c.name || c}</div>`; }); }
 
-                // Publications
                 const pubContainer = document.getElementById('cms-publications');
-                if(data.publications) {
-                    data.publications.forEach(item => {
-                        pubContainer.innerHTML += `<div class="resume-item"><div class="resume-company">${item.company}</div><div class="resume-text text-gray-200">${item.title}</div></div>`;
-                    });
-                }
+                if(data.publications) { data.publications.forEach(i => { pubContainer.innerHTML += `<div class="resume-item"><div class="resume-company">${i.company}</div><div class="resume-text text-gray-200">${i.title}</div></div>`; }); }
 
-                // Education
                 const eduContainer = document.getElementById('cms-education');
-                if(data.education) {
-                    data.education.forEach(item => {
-                        eduContainer.innerHTML += `<div class="resume-item"><div class="resume-company">${item.company}</div><div class="resume-text text-gray-200">${item.title}</div></div>`;
-                    });
-                }
+                if(data.education) { data.education.forEach(i => { eduContainer.innerHTML += `<div class="resume-item"><div class="resume-company">${i.company}</div><div class="resume-text text-gray-200">${i.title}</div></div>`; }); }
 
-                // Bottom Image Logic
                 const bottomImg = document.getElementById('cms-bottom-image');
                 const bottomImgWrapper = document.getElementById('cms-bottom-image-wrapper');
-                
                 bottomImg.src = formatImg(data.bottom_image);
                 bottomImg.style.width = data.bottom_image_width || '100%';
-                
-                if(data.bottom_image_align === 'left') {
-                    bottomImgWrapper.style.justifyContent = 'flex-start';
-                } else if(data.bottom_image_align === 'right') {
-                    bottomImgWrapper.style.justifyContent = 'flex-end';
-                } else {
-                    bottomImgWrapper.style.justifyContent = 'center';
-                }
+                bottomImgWrapper.style.justifyContent = data.bottom_image_align === 'left' ? 'flex-start' : (data.bottom_image_align === 'right' ? 'flex-end' : 'center');
 
-            } catch (error) {
-                console.error("Error loading About CMS data:", error);
-            }
+            } catch (error) { console.error("Error loading CMS data:", error); }
         });
     </script>
 </body>
