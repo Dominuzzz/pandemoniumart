@@ -7,139 +7,93 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <style>
-        body { 
-            font-family: 'DM Sans', sans-serif; 
-            background-color: #050505; 
-            color: #e5e5e5; 
-            overflow: hidden; /* Prevents scrolling on the hero page */
-        }
-        
-        /* Navigation Links */
-        .nav-link { 
-            font-size: 11px; 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            letter-spacing: 0.15em; 
-            transition: color 0.3s; 
-            text-shadow: 0px 2px 4px rgba(0,0,0,0.8); 
-            cursor: pointer;
-        }
+        body { font-family: 'DM Sans', sans-serif; background-color: #050505; color: #e5e5e5; overflow: hidden; }
+        .nav-link { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; transition: color 0.3s; text-shadow: 0px 2px 4px rgba(0,0,0,0.8); cursor: pointer; }
         .nav-link:hover { color: #fff; }
-        
-        /* Dropdown Setup */
-        .dropdown-menu { 
-            display: none; 
-            position: absolute; 
-            top: 100%; 
-            left: -10px; 
-            background: rgba(5,5,5,0.95); 
-            backdrop-filter: blur(10px); 
-            min-width: 160px; 
-            border: 1px solid rgba(255,255,255,0.05); 
-            padding: 10px 0; 
-        }
+        .dropdown-menu { display: none; position: absolute; top: 100%; left: -10px; background: rgba(5,5,5,0.95); backdrop-filter: blur(10px); min-width: 160px; border: 1px solid rgba(255,255,255,0.05); padding: 10px 0; }
         .dropdown:hover .dropdown-menu { display: block; }
-        .dropdown-item { 
-            display: block; 
-            padding: 10px 20px; 
-            font-size: 10px; 
-            text-transform: uppercase; 
-            letter-spacing: 0.15em; 
-            color: #888; 
-            transition: 0.3s; 
-        }
+        .dropdown-item { display: block; padding: 10px 20px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: #888; transition: 0.3s; }
         .dropdown-item:hover { color: #fff; background: rgba(255,255,255,0.05); }
-
-        /* Slideshow Setup */
-        .slide { 
-            position: absolute; 
-            inset: 0; 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            opacity: 0; 
-            transition: opacity 2s ease-in-out; 
-            z-index: -1; 
-        }
+        .slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 2s ease-in-out; z-index: -1; }
         .slide.active { opacity: 1; }
-        
-        /* Dark Gradient Overlay (Ensures text is always readable over bright art) */
-        .overlay { 
-            position: absolute; 
-            inset: 0; 
-            background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 15%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.8) 100%); 
-            z-index: 0; 
-            pointer-events: none; 
-        }
+        .overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 15%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.8) 100%); z-index: 0; pointer-events: none; }
     </style>
 </head>
 <body class="h-screen w-full relative">
 
     <div id="slideshow-container"></div>
-    
     <div class="overlay"></div>
 
     <nav class="absolute top-0 w-full flex justify-between items-start px-12 py-12 z-10">
-        <a href="home.html" class="text-3xl font-black uppercase italic tracking-tighter" style="text-shadow: 0px 4px 15px rgba(0,0,0,1);">
-            Pandemonium Art
-        </a>
+        <a href="home.html" class="text-3xl font-black uppercase italic tracking-tighter" style="text-shadow: 0px 4px 15px rgba(0,0,0,1);">Pandemonium Art</a>
         
         <div class="flex gap-10 mt-2">
-            <a href="about.html" class="nav-link text-gray-400">About</a>
+            <a href="about.html" id="link-about" class="nav-link text-gray-400">About</a>
             
             <div class="dropdown relative">
-                <span class="nav-link text-gray-400 pb-4 block">Personal</span>
-                <div class="dropdown-menu">
-                    <a href="#" class="dropdown-item">Project Alpha</a>
-                    <a href="#" class="dropdown-item">Sketches</a>
-                </div>
+                <span id="label-personal" class="nav-link text-gray-400 pb-4 block">Personal</span>
+                <div id="drop-personal" class="dropdown-menu"></div>
             </div>
 
             <div class="dropdown relative">
-                <span class="nav-link text-gray-400 pb-4 block">Games</span>
-                <div class="dropdown-menu">
-                    <a href="games.html" class="dropdown-item">Gloomwood</a>
-                    <a href="games.html" class="dropdown-item">Thief</a>
-                    <a href="games.html" class="dropdown-item">Demeo</a>
-                </div>
+                <span id="label-games" class="nav-link text-gray-400 pb-4 block">Games</span>
+                <div id="drop-games" class="dropdown-menu"></div>
             </div>
 
-            <a href="https://your-shop-link.com" target="_blank" class="nav-link text-gray-400">Shop</a>
+            <a href="#" id="link-shop" target="_blank" class="nav-link text-gray-400">Shop</a>
         </div>
     </nav>
 
     <footer class="absolute bottom-0 w-full flex justify-between items-end px-12 py-12 z-10 pointer-events-none">
-        <div class="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-600 pointer-events-auto">
-            &copy; 2026 Pandemonium Art
-        </div>
-        
-        <div class="flex gap-8 pointer-events-auto">
-            <a href="#" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors" style="text-shadow: 0px 2px 5px rgba(0,0,0,0.8);">Instagram</a>
-            <a href="#" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors" style="text-shadow: 0px 2px 5px rgba(0,0,0,0.8);">BlueSky</a>
-            <a href="#" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors" style="text-shadow: 0px 2px 5px rgba(0,0,0,0.8);">LinkedIn</a>
-            <a href="#" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors" style="text-shadow: 0px 2px 5px rgba(0,0,0,0.8);">ArtStation</a>
-        </div>
+        <div class="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-600 pointer-events-auto">&copy; 2026 Pandemonium Art</div>
+        <div id="footer-socials" class="flex gap-8 pointer-events-auto"></div>
     </footer>
 
     <script>
         document.addEventListener("DOMContentLoaded", async () => {
             try {
-                // Fetch the data file your dashboard creates
-                const response = await fetch('content/home.json');
-                const data = await response.json();
+                // 1. LOAD SETTINGS (Menu & Navigation)
+                const settingsRes = await fetch('content/settings.json');
+                const settings = await settingsRes.json();
+
+                // Update Labels
+                document.getElementById('link-about').innerText = settings.label_about;
+                document.getElementById('label-personal').innerText = settings.label_personal;
+                document.getElementById('label-games').innerText = settings.label_games;
+                document.getElementById('link-shop').innerText = settings.label_shop;
+                document.getElementById('link-shop').href = settings.shop_url;
+
+                // Build Personal Dropdown
+                const dropPers = document.getElementById('drop-personal');
+                settings.nav_personal.forEach(proj => {
+                    dropPers.innerHTML += `<a href="project.html?type=personal&id=${proj.slug}" class="dropdown-item">${proj.label}</a>`;
+                });
+
+                // Build Games Dropdown
+                const dropGames = document.getElementById('drop-games');
+                settings.nav_games.forEach(proj => {
+                    dropGames.innerHTML += `<a href="project.html?type=games&id=${proj.slug}" class="dropdown-item">${proj.label}</a>`;
+                });
+
+                // Build Footer Socials
+                const footSocials = document.getElementById('footer-socials');
+                settings.socials.forEach(s => {
+                    footSocials.innerHTML += `<a href="${s.url}" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors" style="text-shadow: 0px 2px 5px rgba(0,0,0,0.8);">${s.platform}</a>`;
+                });
+
+                // 2. LOAD SLIDESHOW
+                const homeRes = await fetch('content/home.json');
+                const homeData = await homeRes.json();
                 const container = document.getElementById('slideshow-container');
                 
-                // If there are images, create them on the page
-                if (data.slides && data.slides.length > 0) {
-                    data.slides.forEach((imgUrl, index) => {
+                if (homeData.slides && homeData.slides.length > 0) {
+                    homeData.slides.forEach((imgUrl, index) => {
                         const img = document.createElement('img');
-                        // Make sure the image path formats correctly whether it's an uploaded file or a URL link
-                        img.src = imgUrl.startsWith('http') ? imgUrl : (imgUrl.startsWith('/') ? imgUrl : '/' + imgUrl);
+                        img.src = imgUrl.startsWith('http') ? imgUrl : '/' + imgUrl;
                         img.className = index === 0 ? 'slide active' : 'slide';
                         container.appendChild(img);
                     });
 
-                    // Start the crossfade animation if there's more than 1 image
                     const slides = document.querySelectorAll('.slide');
                     if (slides.length > 1) {
                         let currentSlide = 0;
@@ -150,9 +104,7 @@
                         }, 5000);
                     }
                 }
-            } catch (error) {
-                console.error("Error loading CMS data:", error);
-            }
+            } catch (e) { console.error("CMS Load Error:", e); }
         });
     </script>
 </body>
