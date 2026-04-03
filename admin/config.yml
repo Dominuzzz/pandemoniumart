@@ -3,7 +3,6 @@ backend:
   repo: Dominuzzz/pandemoniumart
   branch: main
 
-# This tells the dashboard where to put new images you upload
 media_folder: "images"
 public_folder: "images"
 
@@ -18,3 +17,20 @@ collections:
         name: "home_settings"
         fields:
           - {label: "Slideshow Images", name: "slides", widget: "list", field: {label: "Image", name: "image", widget: "image"}}
+
+  - name: "aboutpage"
+    label: "About Page Settings"
+    editor:
+      preview: false
+    files:
+      - file: "content/about.json"
+        label: "About Page Content"
+        name: "about_settings"
+        fields:
+          - {label: "Profile Square Image", name: "profile_image", widget: "image"}
+          - {label: "Bio Text", name: "bio", widget: "text"}
+          - {label: "Experience", name: "experience", widget: "list", fields: [{label: "Year", name: "year", widget: "string"}, {label: "Role & Company", name: "title", widget: "string"}]}
+          - {label: "Freelance Clients", name: "clients", widget: "list", field: {label: "Client Name", name: "name", widget: "string"}}
+          - {label: "Publications", name: "publications", widget: "list", fields: [{label: "Year", name: "year", widget: "string"}, {label: "Title", name: "title", widget: "string"}]}
+          - {label: "Education", name: "education", widget: "list", fields: [{label: "Year", name: "year", widget: "string"}, {label: "Degree & School", name: "degree", widget: "string"}]}
+          - {label: "Bottom Long Image", name: "bottom_image", widget: "image"}
