@@ -35,21 +35,33 @@ collections:
         fields:
           - {label: "Slideshow Images", name: "slides", widget: "list", field: {label: "Image", name: "image", widget: "image"}}
 
-  - name: "aboutpage"
+ - name: "aboutpage"
     label: "About Page Settings"
+    editor:
+      preview: false
     files:
       - file: "content/about.json"
         label: "About Page"
         name: "about_settings"
         fields:
           - {label: "Profile Image", name: "profile_image", widget: "image"}
-          - {label: "Name", name: "name", widget: "string"}
+          - {label: "Your Name", name: "name", widget: "string"}
           - {label: "Name Font Size", name: "name_size", widget: "select", options: ["24px", "30px", "36px", "48px", "60px"], default: "30px"}
           - {label: "Bio Text", name: "bio", widget: "text"}
           - {label: "Resume PDF", name: "resume_pdf", widget: "file", required: false}
-          - {label: "Section Titles", name: "titles", widget: "object", fields: [{label: "Experience", name: "exp", widget: "string"}, {label: "Clients", name: "cli", widget: "string"}, {label: "Publications", name: "pub", widget: "string"}, {label: "Education", name: "edu", widget: "string"}]}
-          - {label: "Experience List", name: "experience", widget: "list", fields: [{label: "Company", name: "company", widget: "string"}, {label: "Role", name: "title", widget: "string"}, {label: "Projects", name: "projects", widget: "string", required: false}]}
-
+          - {label: "Social Links", name: "socials", widget: "list", fields: [{label: "Platform Name", name: "platform", widget: "string"}, {label: "URL", name: "url", widget: "string"}]}
+          - {label: "Section Title: Experience", name: "title_experience", widget: "string"}
+          - {label: "Experience List", name: "experience", widget: "list", fields: [{label: "Company", name: "company", widget: "string"}, {label: "Role & Year", name: "title", widget: "string"}, {label: "Projects", name: "projects", widget: "string", required: false}]}
+          - {label: "Section Title: Clients", name: "title_clients", widget: "string"}
+          - {label: "Freelance Clients", name: "clients", widget: "list", field: {label: "Client Name", name: "name", widget: "string"}}
+          - {label: "Section Title: Publications", name: "title_publications", widget: "string"}
+          - {label: "Publications", name: "publications", widget: "list", fields: [{label: "Company", name: "company", widget: "string"}, {label: "Title", name: "title", widget: "string"}]}
+          - {label: "Section Title: Education", name: "title_education", widget: "string"}
+          - {label: "Education", name: "education", widget: "list", fields: [{label: "School", name: "company", widget: "string"}, {label: "Degree", name: "title", widget: "string"}]}
+          - {label: "Bottom Long Image", name: "bottom_image", widget: "image"}
+          - {label: "Bottom Image Width", name: "bottom_image_width", widget: "select", options: ["100%", "75%", "50%", "25%"], default: "100%"}
+          - {label: "Bottom Image Alignment", name: "bottom_image_align", widget: "select", options: ["left", "center", "right"], default: "center"}
+  
   - name: "games"
     label: "Games Projects"
     folder: "content/games"
