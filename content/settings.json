@@ -1,0 +1,24 @@
+{
+  "label_about": "About",
+  "label_personal": "Personal",
+  "label_games": "Games",
+  "label_shop": "Shop",
+  "shop_url": "https://yourshop.com",
+  "nav_games": [
+    {"label": "Key Art", "slug": "key-art"},
+    {"label": "Battlemarked", "slug": "battlemarked"},
+    {"label": "Demeo Battles", "slug": "demeo-battles"},
+    {"label": "Demeo", "slug": "demeo"},
+    {"label": "Songs of Conquest", "slug": "songs-of-conquest"},
+    {"label": "Game Art", "slug": "game-art"}
+  ],
+  "nav_personal": [
+    {"label": "Scavenger", "slug": "scavenger"},
+    {"label": "Illustration", "slug": "illustration"},
+    {"label": "Inktober", "slug": "inktober"}
+  ],
+  "socials": [
+    {"platform": "Instagram", "url": "#"},
+    {"platform": "ArtStation", "url": "#"}
+  ]
+}
