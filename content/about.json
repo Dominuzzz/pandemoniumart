@@ -79,17 +79,33 @@
     {
       "company": "3D Total",
       "title": "Masterclass Feature (2022)"
+    },
+    {
+      "company": "EDGE",
+      "title": "Issue 39"
     }
   ],
   "title_education": "Education",
   "education": [
     {
-      "company": "Hariclea Darclee Art School",
-      "title": "Braila, 2001"
+      "company": "Braila, 2001",
+      "title": "Hariclea Darclee Art School"
     },
     {
-      "company": "THU",
-      "title": "Troa, 2016 & Malta, 2018"
+      "company": "Troia, 2016 & Malta, 2018",
+      "title": "THU - Trojan Horse was an Unicorn"
+    },
+    {
+      "company": "Stockholm & Barcelona, 2016",
+      "title": "Schoolism Workshops"
+    },
+    {
+      "company": "Berlin, 2010",
+      "title": "Massive Black Workshop - MADE Symposium"
+    },
+    {
+      "company": "Bucharest 2010, 2012",
+      "title": "Behind the Iron Curtain Workshops"
     }
   ],
   "bottom_image": "/images/logos-1.png",
