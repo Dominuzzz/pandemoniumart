@@ -2,7 +2,7 @@
   "profile_image": "/images/picture-1.jpg",
   "name": "Alexandru Negoita",
   "name_size": "24px",
-  "bio": "Hi, I’m Alexandru Negoiță, a Stockholm-based concept artist and illustrator with 20 years of experience in the video game industry. I’ve worked as an art director and lead concept artist, creating a wide range of game art for established studios, with a strong foundation and the ability to adapt to diverse visual styles.\n\nI specialize in world-building, visual development, concept art, and art direction, as well as in creating cinematic key art and iconic imagery that defines the brand and narrative of world-class video games. \n\nIn 2019, I co-founded Shardstone Assembly and published Scavenger, an original D&D campaign sourcebook. My illustration work has been published internationally in Spectrum, Exposé, ImagineFX and EDGE.",
+  "bio": "Hi, I’m Alexandru Negoiță, a Stockholm-based concept artist and illustrator with 20 years of experience in the video game industry. I’ve worked as an art director and lead concept artist, creating a wide range of game art for established studios, with a strong foundation and the ability to adapt to diverse visual styles.\n\nI specialize in world-building, visual development, concept art, and art direction, as well as in creating cinematic key art and iconic imagery that defines the brand and narrative of world-class video games.\n\nIn 2019, I co-founded Shardstone Assembly and published Scavenger, an original D&D campaign sourcebook. My illustration work has been published internationally in Spectrum, Exposé, ImagineFX and EDGE.",
   "resume_pdf": "/images/Alexandru Negoita resume.pdf",
   "socials": [
     {
@@ -26,32 +26,38 @@
   "experience": [
     {
       "company": "Shardstone Assembly",
-      "title": "Co-creator of the Scavenger and Sküllbox IPs, worldbuilding, concept art, illustration, visual dev, layout design, art direction, and social media.",
+      "role": "Co-creator of the Scavenger and Sküllbox IPs",
+      "title": "Worldbuilding, concept art, illustration, visual dev, layout design, art direction, and social media.",
       "projects": "○ Scavenger   ○ Sküllbox   ○ Scavenger: Crimson Catalyst"
     },
     {
       "company": "Resolution Games",
+      "role": "Lead Concept Artist",
       "title": "Art direction and concept art for:",
       "projects": "○ Demeo X Dungeons & Dragons: Battlemarked   ○ Demeo: Reign of Madness   ○ Demeo Battles"
     },
     {
       "company": "Lavapotion",
-      "title": "Concept Artist - Created concept art for the game characters, portrait illustrations, skills and spells icons, banners, and menu art.",
+      "role": "Concept Artist",
+      "title": "Created concept art for the game characters, portrait illustrations, skills and spells icons, banners, and menu art.",
       "projects": "○ Songs of Conquest"
     },
     {
       "company": "King",
-      "title": "Jr. Art Director - Provided art direction, mock-ups, concepts, and assets. Game prototyping. Art team recruiting and coaching. Production pipeline optimization.",
+      "role": "Jr. Art Director",
+      "title": "Provided art direction, mock-ups, concepts, and assets. Game prototyping. Art team recruiting and coaching. Production pipeline optimization.",
       "projects": "○ Candy Crush   ○ Bubble Witch Saga  ○ Amazing Garden Stampede"
     },
     {
       "company": "EA",
-      "title": "Art Director - Provided art direction, mock-ups, concepts, and assets. Game prototyping. Art team recruiting and coaching. Production pipeline optimization.",
+      "role": "Art Director",
+      "title": "Provided art direction, mock-ups, concepts, and assets. Game prototyping. Art team recruiting and coaching. Production pipeline optimization.",
       "projects": "○ Unreleased projects   ○ Fifa 11"
     },
     {
       "company": "Gameloft",
-      "title": "Senior Artist - Created concept art, game assets, mock-ups, UI, and visual dev.",
+      "role": "Senior Artist",
+      "title": "Created concept art, game assets, mock-ups, UI, and visual dev.",
       "projects": "○ Assassin’s Creed DS  ○ Brothers in Arms DS  ○ N.O.V.A. Legacy  ○ Ferrari GT: Evolution"
     }
   ],
