@@ -10,10 +10,6 @@
         body { font-family: 'DM Sans', sans-serif; background-color: #050505; color: #e5e5e5; }
         .nav-link { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; transition: 0.3s; cursor: pointer; }
         .nav-link:hover { color: #fff; }
-        .dropdown-menu { display: none; position: absolute; top: 100%; left: -10px; background: rgba(5,5,5,0.95); backdrop-filter: blur(15px); min-width: 180px; border: 1px solid rgba(255,255,255,0.1); padding: 10px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .dropdown:hover .dropdown-menu { display: block; }
-        .dropdown-item { display: block; padding: 12px 20px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: #888; transition: 0.3s; }
-        .dropdown-item:hover { color: #fff; background: rgba(255,255,255,0.05); }
         .resume-section { margin-bottom: 4rem; }
         .resume-title { font-size: 10px; text-transform: uppercase; letter-spacing: 0.3em; opacity: 0.4; margin-bottom: 1.5rem; font-weight: 700;}
         .resume-item { display: flex; gap: 2rem; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1.5rem;}
@@ -25,11 +21,10 @@
 </head>
 <body class="w-full relative">
 
-    <nav class="absolute top-0 w-full flex justify-between items-start px-12 py-12 z-50">
-        <a href="home.html" class="text-3xl font-black uppercase italic tracking-tighter" style="text-shadow: 0px 4px 15px rgba(0,0,0,1);">Pandemonium Art</a>
-        
+    <nav class="fixed top-0 w-full flex justify-between items-start px-12 py-10 z-50 bg-[#050505]/90 backdrop-blur-md border-b border-white/5">
+        <a href="home.html" class="text-3xl font-black uppercase italic tracking-tighter">Pandemonium Art</a>
         <div class="flex gap-10 mt-2">
-            <a href="about.html" id="link-about" class="nav-link text-gray-400">About</a>
+            <a href="about.html" id="link-about" class="nav-link text-white">About</a>
             <a href="portfolio.html" id="link-portfolio" class="nav-link text-gray-400">Portfolio</a>
             <a href="#" id="link-shop" target="_blank" class="nav-link text-gray-400">Shop</a>
         </div>
@@ -75,46 +70,36 @@
         <img id="cms-bottom-image" src="" alt="Featured Art" class="h-auto max-h-[600px] object-cover filter brightness-75 hover:brightness-100 transition duration-700">
     </div>
 
-    <footer class="absolute bottom-0 w-full flex justify-between items-end px-12 py-12 z-10 pointer-events-none">
-        <div class="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-600 pointer-events-auto">&copy; 2026 Pandemonium Art</div>
-        <div id="footer-socials" class="flex gap-8 pointer-events-auto"></div>
+    <footer class="w-full flex justify-between items-end px-12 py-12 border-t border-white/5">
+        <div class="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-600">&copy; 2026 Pandemonium Art</div>
+        <div id="footer-socials" class="flex gap-8"></div>
     </footer>
 
     <script>
+        const formatImg = (url) => {
+            if (!url) return '';
+            if (url.startsWith('http')) return url;
+            return '/' + url.replace(/^\/+/, ''); 
+        };
+
         document.addEventListener("DOMContentLoaded", async () => {
+            const cacheBust = '?v=' + Date.now();
             try {
                 // 1. GLOBAL SETTINGS
-                const settingsRes = await fetch('content/settings.json');
+                const settingsRes = await fetch('content/settings.json' + cacheBust);
                 const settings = await settingsRes.json();
                 document.getElementById('link-about').innerText = settings.label_about || "About";
-                document.getElementById('label-personal').innerText = settings.label_personal || "Personal";
-                document.getElementById('label-games').innerText = settings.label_games || "Games";
+                document.getElementById('link-portfolio').innerText = settings.label_portfolio || "Portfolio";
                 document.getElementById('link-shop').innerText = settings.label_shop || "Shop";
                 document.getElementById('link-shop').href = settings.shop_url || "#";
 
-                const dropPers = document.getElementById('drop-personal');
-                settings.nav_personal.forEach(p => { dropPers.innerHTML += `<a href="project.html?type=personal&id=${p.slug}" class="dropdown-item">${p.label}</a>`; });
-                const dropGames = document.getElementById('drop-games');
-                settings.nav_games.forEach(p => { dropGames.innerHTML += `<a href="project.html?type=games&id=${p.slug}" class="dropdown-item">${p.label}</a>`; });
-                const footSocials = document.getElementById('footer-socials');
-                settings.socials.forEach(s => { footSocials.innerHTML += `<a href="${s.url}" target="_blank" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors">${s.platform}</a>`; });
-
                 // 2. ABOUT DATA
-                const response = await fetch('content/about.json');
+                const response = await fetch('content/about.json' + cacheBust);
                 const data = await response.json();
                 
-                // SMARTER PATHING: Removes double slashes and handles leading slashes automatically
-                const formatImg = (url) => {
-                    if (!url) return '';
-                    if (url.startsWith('http')) return url;
-                    let path = url.replace(/^\/+/, ''); // Remove all leading slashes
-                    return '/' + path; // Add one single leading slash
-                };
-
                 const nameEl = document.getElementById('cms-name');
                 nameEl.innerText = data.name || 'Alexandru Negoita';
                 nameEl.style.fontSize = data.name_size || '30px';
-                
                 document.getElementById('cms-profile-image').src = formatImg(data.profile_image);
                 document.getElementById('cms-bio').innerText = data.bio;
                 document.getElementById('cms-title-experience').innerText = data.title_experience || 'Experience';
@@ -128,10 +113,16 @@
                     rBtn.classList.remove('hidden');
                 }
 
+                // Social Sidebar
                 const socCont = document.getElementById('cms-socials');
                 socCont.innerHTML = '';
-                if(data.socials) { data.socials.forEach(s => { socCont.innerHTML += `<a href="${s.url}" target="_blank" class="text-[11px] font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-colors w-max">${s.platform} &rarr;</a>`; }); }
+                if(data.socials) { 
+                    data.socials.forEach(s => { 
+                        socCont.innerHTML += `<a href="${s.url}" target="_blank" class="text-[11px] font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-colors w-max">${s.platform} &rarr;</a>`; 
+                    }); 
+                }
 
+                // Experience
                 const expCont = document.getElementById('cms-experience');
                 expCont.innerHTML = '';
                 if(data.experience) { data.experience.forEach(i => {
@@ -139,23 +130,36 @@
                     expCont.innerHTML += `<div class="resume-item"><div class="resume-company">${i.company}</div><div><div class="resume-text text-gray-200">${i.title}</div>${projHtml}</div></div>`;
                 }); }
 
+                // Clients
                 const cliCont = document.getElementById('cms-clients');
                 cliCont.innerHTML = '';
                 if(data.clients) { data.clients.forEach(c => { cliCont.innerHTML += `<div>${c.name || c}</div>`; }); }
 
+                // Publications
                 const pubCont = document.getElementById('cms-publications');
                 pubCont.innerHTML = '';
                 if(data.publications) { data.publications.forEach(i => { pubCont.innerHTML += `<div class="resume-item"><div class="resume-company">${i.company}</div><div class="resume-text text-gray-200">${i.title}</div></div>`; }); }
 
+                // Education
                 const eduCont = document.getElementById('cms-education');
                 eduCont.innerHTML = '';
                 if(data.education) { data.education.forEach(i => { eduCont.innerHTML += `<div class="resume-item"><div class="resume-company">${i.company}</div><div class="resume-text text-gray-200">${i.title}</div></div>`; }); }
 
+                // Bottom Art
                 const bImg = document.getElementById('cms-bottom-image');
                 bImg.src = formatImg(data.bottom_image);
                 bImg.style.width = data.bottom_image_width || '100%';
                 const bWrap = document.getElementById('cms-bottom-image-wrapper');
                 bWrap.style.justifyContent = data.bottom_image_align === 'left' ? 'flex-start' : (data.bottom_image_align === 'right' ? 'flex-end' : 'center');
+
+                // 3. Footer Socials
+                const footSocials = document.getElementById('footer-socials');
+                footSocials.innerHTML = '';
+                if (data.socials) {
+                    data.socials.forEach(s => {
+                        footSocials.innerHTML += `<a href="${s.url}" target="_blank" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors">${s.platform}</a>`;
+                    });
+                }
 
             } catch (e) { console.error("CMS Load Error:", e); }
         });
