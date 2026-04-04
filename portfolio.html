@@ -10,11 +10,17 @@
         body { font-family: 'DM Sans', sans-serif; background-color: #050505; color: #e5e5e5; }
         .nav-link { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; transition: 0.3s; cursor: pointer; }
         .nav-link:hover { color: #fff; }
+        
+        /* Grid Hover & Aspect Ratio Effects */
         .project-card { transition: transform 0.5s ease; cursor: pointer; }
         .project-card:hover .project-thumb { filter: brightness(1.1); transform: scale(1.02); }
-        .project-thumb { width: 100%; aspect-ratio: 4/3; object-fit: cover; filter: brightness(0.85); transition: all 0.5s ease; }
-        .project-title { margin-top: 1rem; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #888; transition: color 0.3s; }
-        .project-card:hover .project-title { color: #fff; }
+        
+        /* Changed to 3/4 aspect ratio for taller images */
+        .project-thumb { width: 100%; aspect-ratio: 3/4; object-fit: cover; filter: brightness(0.85); transition: all 0.5s ease; }
+        
+        /* Typography Updates */
+        .project-title { margin-top: 1.25rem; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #fff; transition: color 0.3s; }
+        .project-company { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #888; margin-top: 0.25rem; }
     </style>
 </head>
 <body class="w-full relative">
@@ -30,7 +36,8 @@
 
     <main class="max-w-7xl mx-auto px-12 pt-40 pb-32">
         <div id="portfolio-intro" class="mb-20"></div>
-        <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16"></div>
+        
+        <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-16"></div>
     </main>
 
     <footer class="w-full flex justify-between items-end px-12 py-12 border-t border-white/5">
@@ -49,19 +56,14 @@
             const cacheBust = '?v=' + Date.now();
             try {
                 // 1. Intro Text
-               try {
                 const introRes = await fetch('content/portfolio_page.json' + cacheBust);
                 const introData = await introRes.json();
-                
-                // This fix allows the Markdown/HTML from the dashboard to render properly
                 const introEl = document.getElementById('portfolio-intro');
                 if (introData.intro_text) {
-                    // We check if it's markdown or raw HTML and clean it up
                     introEl.innerHTML = introData.intro_text.replace(/\n/g, '<br>');
                 }
-            } catch (e) { console.warn("No intro text found."); }
 
-                // 2. Load Nav & Socials (Synced from About)
+                // 2. Load Nav & Socials
                 const settingsRes = await fetch('content/settings.json' + cacheBust);
                 const settings = await settingsRes.json();
                 document.getElementById('link-about').innerText = settings.label_about || "About";
@@ -78,7 +80,7 @@
                     });
                 }
 
-                // 3. Load Grid
+                // 3. Load 4-Column Grid Data
                 const grid = document.getElementById('portfolio-grid');
                 if (settings.portfolio_order) {
                     for (const proj of settings.portfolio_order) {
@@ -86,12 +88,17 @@
                         try {
                             const projRes = await fetch(`content/projects/${slug}.json` + cacheBust);
                             const projData = await projRes.json();
+                            
+                            // Check if company exists, if so render the grey text
+                            let companyHtml = projData.company ? `<div class="project-company">${projData.company}</div>` : '';
+                            
                             grid.innerHTML += `
                                 <a href="project.html?id=${slug}" class="project-card block">
                                     <div class="overflow-hidden bg-[#111]">
                                         <img src="${formatImg(projData.thumbnail)}" alt="${projData.title}" class="project-thumb">
                                     </div>
                                     <h3 class="project-title">${projData.title}</h3>
+                                    ${companyHtml}
                                 </a>`;
                         } catch (err) { console.warn(`Could not load project: ${slug}`); }
                     }
