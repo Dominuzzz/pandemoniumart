@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pandemonium Art | About</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'DM Sans', sans-serif; background-color: #050505; color: #e5e5e5; }
@@ -13,10 +14,18 @@
         .resume-section { margin-bottom: 4rem; }
         .resume-title { font-size: 10px; text-transform: uppercase; letter-spacing: 0.3em; opacity: 0.4; margin-bottom: 1.5rem; font-weight: 700;}
         .resume-item { display: flex; gap: 2rem; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1.5rem;}
+        
         .resume-company { width: 160px; opacity: 0.5; font-size: 13px; flex-shrink: 0; font-weight: 700;}
-        .resume-text { font-size: 15px; font-weight: 400; line-height: 1.6;}
-        .resume-projects { font-size: 11px; color: #888; margin-top: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700;}
-        #cms-bio { white-space: pre-wrap; }
+        .resume-role { color: #fff; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;}
+        .resume-text { font-size: 15px; font-weight: 400; line-height: 1.6; color: #9ca3af; }
+        .resume-projects { font-size: 11px; color: #888; margin-top: 1rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700;}
+        
+        /* Rich Text Styling */
+        .md-content p { margin-bottom: 0.75rem; }
+        .md-content p:last-child { margin-bottom: 0; }
+        .md-content ul { list-style-type: disc; margin-left: 1.25rem; margin-bottom: 0.75rem; }
+        .md-content strong { color: #fff; font-weight: 700; }
+        .md-inline p { display: inline; margin: 0; }
     </style>
 </head>
 <body class="w-full relative">
@@ -37,7 +46,7 @@
                     <img id="cms-profile-image" src="" alt="Profile" class="w-full h-full object-cover transform hover:scale-105 transition duration-700">
                 </div>
                 <h1 id="cms-name" class="font-black uppercase italic tracking-tighter mb-4 transition-all duration-300"></h1>
-                <p id="cms-bio" class="text-sm leading-relaxed text-gray-400 mb-8"></p>
+                <div id="cms-bio" class="text-sm leading-relaxed text-gray-400 mb-8 md-content"></div>
                 <div class="flex gap-4 mb-10">
                     <a id="cms-resume-btn" href="#" target="_blank" class="border border-white/20 px-5 py-3 text-[10px] uppercase tracking-widest font-bold text-gray-300 hover:bg-white hover:text-black transition-colors hidden">Resume &darr;</a>
                     <a href="mailto:dominuz@gmail.com" class="border border-white/20 px-5 py-3 text-[10px] uppercase tracking-widest font-bold text-gray-300 hover:bg-white hover:text-black transition-colors">Contact</a>
@@ -53,7 +62,7 @@
             </div>
             <div class="resume-section">
                 <h2 id="cms-title-clients" class="resume-title"></h2>
-                <div id="cms-clients" class="grid grid-cols-2 gap-y-4 gap-x-8 text-15px text-gray-300"></div>
+                <div id="cms-clients" class="grid grid-cols-2 gap-y-4 gap-x-8 text-15px text-gray-300 md-content"></div>
             </div>
             <div class="resume-section">
                 <h2 id="cms-title-publications" class="resume-title"></h2>
@@ -82,6 +91,10 @@
             return '/' + url.replace(/^\/+/, ''); 
         };
 
+        // Helpers to parse Markdown
+        const parseMD = (str) => str ? marked.parse(str) : '';
+        const parseMDInline = (str) => str ? marked.parseInline(str) : '';
+
         document.addEventListener("DOMContentLoaded", async () => {
             const cacheBust = '?v=' + Date.now();
             try {
@@ -101,7 +114,10 @@
                 nameEl.innerText = data.name || 'Alexandru Negoita';
                 nameEl.style.fontSize = data.name_size || '30px';
                 document.getElementById('cms-profile-image').src = formatImg(data.profile_image);
-                document.getElementById('cms-bio').innerText = data.bio;
+                
+                // Bio parsed as Markdown
+                document.getElementById('cms-bio').innerHTML = parseMD(data.bio);
+                
                 document.getElementById('cms-title-experience').innerText = data.title_experience || 'Experience';
                 document.getElementById('cms-title-clients').innerText = data.title_clients || 'Freelance Clients';
                 document.getElementById('cms-title-publications').innerText = data.title_publications || 'Publications';
@@ -122,28 +138,43 @@
                     }); 
                 }
 
-                // Experience
+                // Experience (With new Role field aligned to Company)
                 const expCont = document.getElementById('cms-experience');
                 expCont.innerHTML = '';
                 if(data.experience) { data.experience.forEach(i => {
-                    let projHtml = i.projects ? `<div class="resume-projects">${i.projects}</div>` : '';
-                    expCont.innerHTML += `<div class="resume-item"><div class="resume-company">${i.company}</div><div><div class="resume-text text-gray-200">${i.title}</div>${projHtml}</div></div>`;
+                    let roleHtml = i.role ? `<div class="resume-role md-inline">${parseMDInline(i.role)}</div>` : '';
+                    let titleHtml = i.title ? `<div class="resume-text md-content">${parseMD(i.title)}</div>` : '';
+                    let projHtml = i.projects ? `<div class="resume-projects md-content">${parseMD(i.projects)}</div>` : '';
+                    
+                    expCont.innerHTML += `
+                        <div class="resume-item">
+                            <div class="resume-company md-inline">${parseMDInline(i.company)}</div>
+                            <div class="flex-1">
+                                ${roleHtml}
+                                ${titleHtml}
+                                ${projHtml}
+                            </div>
+                        </div>`;
                 }); }
 
                 // Clients
                 const cliCont = document.getElementById('cms-clients');
                 cliCont.innerHTML = '';
-                if(data.clients) { data.clients.forEach(c => { cliCont.innerHTML += `<div>${c.name || c}</div>`; }); }
+                if(data.clients) { data.clients.forEach(c => { cliCont.innerHTML += `<div class="md-inline">${parseMDInline(c.name || c)}</div>`; }); }
 
                 // Publications
                 const pubCont = document.getElementById('cms-publications');
                 pubCont.innerHTML = '';
-                if(data.publications) { data.publications.forEach(i => { pubCont.innerHTML += `<div class="resume-item"><div class="resume-company">${i.company}</div><div class="resume-text text-gray-200">${i.title}</div></div>`; }); }
+                if(data.publications) { data.publications.forEach(i => { 
+                    pubCont.innerHTML += `<div class="resume-item"><div class="resume-company md-inline">${parseMDInline(i.company)}</div><div class="resume-text text-gray-200 md-inline">${parseMDInline(i.title)}</div></div>`; 
+                }); }
 
                 // Education
                 const eduCont = document.getElementById('cms-education');
                 eduCont.innerHTML = '';
-                if(data.education) { data.education.forEach(i => { eduCont.innerHTML += `<div class="resume-item"><div class="resume-company">${i.company}</div><div class="resume-text text-gray-200">${i.title}</div></div>`; }); }
+                if(data.education) { data.education.forEach(i => { 
+                    eduCont.innerHTML += `<div class="resume-item"><div class="resume-company md-inline">${parseMDInline(i.company)}</div><div class="resume-text text-gray-200 md-inline">${parseMDInline(i.title)}</div></div>`; 
+                }); }
 
                 // Bottom Art
                 const bImg = document.getElementById('cms-bottom-image');
