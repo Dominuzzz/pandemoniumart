@@ -11,6 +11,10 @@
     {
       "label": "Project test second",
       "slug": "project-test-second"
+    },
+    {
+      "label": "Test 3",
+      "slug": "project-test-second"
     }
   ]
 }
