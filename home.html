@@ -3,17 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pandemonium Art | Portfolio</title>
+    <title>Pandemonium Art | Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'DM Sans', sans-serif; background-color: #050505; color: #e5e5e5; overflow: hidden; }
         .nav-link { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; transition: color 0.3s; text-shadow: 0px 2px 4px rgba(0,0,0,1); cursor: pointer; }
         .nav-link:hover { color: #fff; }
-        .dropdown-menu { display: none; position: absolute; top: 100%; left: -10px; background: rgba(5,5,5,0.95); backdrop-filter: blur(15px); min-width: 180px; border: 1px solid rgba(255,255,255,0.1); padding: 10px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .dropdown:hover .dropdown-menu { display: block; }
-        .dropdown-item { display: block; padding: 12px 20px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: #888; transition: 0.3s; }
-        .dropdown-item:hover { color: #fff; background: rgba(255,255,255,0.05); }
         .slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 2s ease-in-out; z-index: -1; }
         .slide.active { opacity: 1; }
         .overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.7) 100%); z-index: 0; pointer-events: none; }
@@ -29,14 +25,7 @@
         
         <div class="flex gap-10 mt-2">
             <a href="about.html" id="link-about" class="nav-link text-gray-400">About</a>
-            <div class="dropdown relative">
-                <span id="label-personal" class="nav-link text-gray-400 pb-4 block">Personal</span>
-                <div id="drop-personal" class="dropdown-menu"></div>
-            </div>
-            <div class="dropdown relative">
-                <span id="label-games" class="nav-link text-gray-400 pb-4 block">Games</span>
-                <div id="drop-games" class="dropdown-menu"></div>
-            </div>
+            <a href="portfolio.html" id="link-portfolio" class="nav-link text-gray-400">Portfolio</a>
             <a href="#" id="link-shop" target="_blank" class="nav-link text-gray-400">Shop</a>
         </div>
     </nav>
@@ -47,7 +36,6 @@
     </footer>
 
     <script>
-        // Pathing helper: ensures no double slashes //
         const formatImg = (url) => {
             if (!url) return '';
             if (url.startsWith('http')) return url;
@@ -65,8 +53,6 @@
                 
                 if (homeData.slides && homeData.slides.length > 0) {
                     let slideUrls = [...homeData.slides];
-                    
-                    // Shuffle: Image 01 (index 0) stays first, shuffle others
                     if (slideUrls.length > 2) {
                         const firstImage = slideUrls.shift();
                         for (let i = slideUrls.length - 1; i > 0; i--) {
@@ -95,45 +81,27 @@
                 }
             } catch (e) { console.warn("Slideshow failed to load:", e); }
 
-            // 2. LOAD NAVIGATION & SOCIALS
+            // 2. LOAD NAV SETTINGS
             try {
                 const settingsRes = await fetch('content/settings.json' + cacheBust);
                 const settings = await settingsRes.json();
-
-                // Labels
                 document.getElementById('link-about').innerText = settings.label_about || "About";
-                document.getElementById('label-personal').innerText = settings.label_personal || "Personal";
-                document.getElementById('label-games').innerText = settings.label_games || "Games";
+                document.getElementById('link-portfolio').innerText = settings.label_portfolio || "Portfolio";
                 document.getElementById('link-shop').innerText = settings.label_shop || "Shop";
                 document.getElementById('link-shop').href = settings.shop_url || "#";
+            } catch (e) { console.warn("Nav failed:", e); }
 
-                // Personal Dropdown
-                const dropPers = document.getElementById('drop-personal');
-                dropPers.innerHTML = '';
-                if (settings.nav_personal) {
-                    settings.nav_personal.forEach(p => {
-                        dropPers.innerHTML += `<a href="project.html?type=personal&id=${p.slug.toLowerCase()}" class="dropdown-item">${p.label}</a>`;
-                    });
-                }
-
-                // Games Dropdown
-                const dropGames = document.getElementById('drop-games');
-                dropGames.innerHTML = '';
-                if (settings.nav_games) {
-                    settings.nav_games.forEach(p => {
-                        dropGames.innerHTML += `<a href="project.html?type=games&id=${p.slug.toLowerCase()}" class="dropdown-item">${p.label}</a>`;
-                    });
-                }
-
-                // Footer Socials
+            // 3. LOAD FOOTER SOCIALS FROM ABOUT.JSON
+            try {
+                const aboutRes = await fetch('content/about.json' + cacheBust);
+                const aboutData = await aboutRes.json();
                 const footSocials = document.getElementById('footer-socials');
-                footSocials.innerHTML = '';
-                if (settings.socials) {
-                    settings.socials.forEach(s => {
+                if (aboutData.socials) {
+                    aboutData.socials.forEach(s => {
                         footSocials.innerHTML += `<a href="${s.url}" target="_blank" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors" style="text-shadow: 0px 2px 5px rgba(0,0,0,0.8);">${s.platform}</a>`;
                     });
                 }
-            } catch (e) { console.warn("Navigation failed to load:", e); }
+            } catch (e) { console.warn("Socials failed:", e); }
         }
 
         document.addEventListener("DOMContentLoaded", initPage);
