@@ -84,7 +84,7 @@ collections:
         fields:
           - {label: "Slideshow Images", name: "slides", widget: "list", field: {label: "Image", name: "image", widget: "image"}}
 
-  - name: "projects"
+ - name: "projects"
     label: "Projects (Portfolio)"
     folder: "content/projects"
     create: true
@@ -93,7 +93,9 @@ collections:
     format: "json"
     fields:
       - {label: "Project Title", name: "title", widget: "string"}
+      - {label: "Company / Client (Optional)", name: "company", widget: "string", required: false}
       - {label: "Grid Thumbnail Image", name: "thumbnail", widget: "image"}
       - {label: "Project Description", name: "body", widget: "markdown", required: false}
       - {label: "Description Font Size", name: "font_size", widget: "number", default: 18}
       - {label: "Gallery Images", name: "gallery", widget: "list", field: {label: "Image", name: "image", widget: "image"}}
+      
