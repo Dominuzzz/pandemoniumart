@@ -17,16 +17,29 @@ collections:
         label: "Navigation Menu"
         name: "nav_settings"
         fields:
-          - {label: "Menu: About Label", name: "label_about", widget: "string", default: "About"}
-          - {label: "Menu: Portfolio Label", name: "label_portfolio", widget: "string", default: "Portfolio"}
-          - {label: "Menu: Shop Label", name: "label_shop", widget: "string", default: "Shop"}
-          - {label: "Shop URL", name: "shop_url", widget: "string"}
+          - label: "Menu: About Label"
+            name: "label_about"
+            widget: "string"
+            default: "About"
+          - label: "Menu: Portfolio Label"
+            name: "label_portfolio"
+            widget: "string"
+            default: "Portfolio"
+          - label: "Menu: Shop Label"
+            name: "label_shop"
+            widget: "string"
+            default: "Shop"
+          - label: "Shop URL"
+            name: "shop_url"
+            widget: "string"
           - label: "Portfolio Manual Order"
             name: "portfolio_order"
             widget: "list"
-            summary: "{{label}}" 
+            summary: "{{label}}"
             fields:
-              - {label: "Project Display Name", name: "label", widget: "string"}
+              - label: "Project Display Name"
+                name: "label"
+                widget: "string"
               - label: "Select Project"
                 name: "slug"
                 widget: "relation"
@@ -44,7 +57,9 @@ collections:
         label: "Portfolio Page Intro"
         name: "portfolio_settings"
         fields:
-          - {label: "Page Title / Intro Text", name: "intro_text", widget: "markdown"}
+          - label: "Page Title / Intro Text"
+            name: "intro_text"
+            widget: "markdown"
 
   - name: "aboutpage"
     label: "About Page Settings"
@@ -55,23 +70,78 @@ collections:
         label: "About Page"
         name: "about_settings"
         fields:
-          - {label: "Profile Image", name: "profile_image", widget: "image"}
-          - {label: "Your Name", name: "name", widget: "string"}
-          - {label: "Name Font Size", name: "name_size", widget: "select", options: ["24px", "30px", "36px", "48px", "60px"], default: "30px"}
-          - {label: "Bio Text", name: "bio", widget: "text"}
-          - {label: "Resume PDF", name: "resume_pdf", widget: "file", required: false}
-          - {label: "Social Links (Populates Sidebar & Footer)", name: "socials", widget: "list", fields: [{label: "Platform Name", name: "platform", widget: "string"}, {label: "URL", name: "url", widget: "string"}]}
-          - {label: "Section Title: Experience", name: "title_experience", widget: "string"}
-          - {label: "Experience List", name: "experience", widget: "list", fields: [{label: "Company", name: "company", widget: "string"}, {label: "Role & Year", name: "title", widget: "string"}, {label: "Projects", name: "projects", widget: "string", required: false}]}
-          - {label: "Section Title: Clients", name: "title_clients", widget: "string"}
-          - {label: "Freelance Clients", name: "clients", widget: "list", field: {label: "Client Name", name: "name", widget: "string"}}
-          - {label: "Section Title: Publications", name: "title_publications", widget: "string"}
-          - {label: "Publications", name: "publications", widget: "list", fields: [{label: "Company", name: "company", widget: "string"}, {label: "Title", name: "title", widget: "string"}]}
-          - {label: "Section Title: Education", name: "title_education", widget: "string"}
-          - {label: "Education", name: "education", widget: "list", fields: [{label: "School", name: "company", widget: "string"}, {label: "Degree", name: "title", widget: "string"}]}
-          - {label: "Bottom Long Image", name: "bottom_image", widget: "image"}
-          - {label: "Bottom Image Width", name: "bottom_image_width", widget: "select", options: ["100%", "75%", "50%", "25%"], default: "100%"}
-          - {label: "Bottom Image Alignment", name: "bottom_image_align", widget: "select", options: ["left", "center", "right"], default: "center"}
+          - label: "Profile Image"
+            name: "profile_image"
+            widget: "image"
+          - label: "Your Name"
+            name: "name"
+            widget: "string"
+          - label: "Name Font Size"
+            name: "name_size"
+            widget: "select"
+            options: ["24px", "30px", "36px", "48px", "60px"]
+            default: "30px"
+          - label: "Bio Text"
+            name: "bio"
+            widget: "text"
+          - label: "Resume PDF"
+            name: "resume_pdf"
+            widget: "file"
+            required: false
+          - label: "Social Links"
+            name: "socials"
+            widget: "list"
+            fields:
+              - {label: "Platform", name: "platform", widget: "string"}
+              - {label: "URL", name: "url", widget: "string"}
+          - label: "Section Title: Experience"
+            name: "title_experience"
+            widget: "string"
+          - label: "Experience List"
+            name: "experience"
+            widget: "list"
+            fields:
+              - {label: "Company", name: "company", widget: "string"}
+              - {label: "Role", name: "title", widget: "string"}
+              - {label: "Projects", name: "projects", widget: "string", required: false}
+          - label: "Section Title: Clients"
+            name: "title_clients"
+            widget: "string"
+          - label: "Freelance Clients"
+            name: "clients"
+            widget: "list"
+            field: {label: "Client Name", name: "name", widget: "string"}
+          - label: "Section Title: Publications"
+            name: "title_publications"
+            widget: "string"
+          - label: "Publications"
+            name: "publications"
+            widget: "list"
+            fields:
+              - {label: "Publisher", name: "company", widget: "string"}
+              - {label: "Title", name: "title", widget: "string"}
+          - label: "Section Title: Education"
+            name: "title_education"
+            widget: "string"
+          - label: "Education"
+            name: "education"
+            widget: "list"
+            fields:
+              - {label: "School", name: "company", widget: "string"}
+              - {label: "Degree", name: "title", widget: "string"}
+          - label: "Bottom Long Image"
+            name: "bottom_image"
+            widget: "image"
+          - label: "Bottom Image Width"
+            name: "bottom_image_width"
+            widget: "select"
+            options: ["100%", "75%", "50%", "25%"]
+            default: "100%"
+          - label: "Bottom Image Alignment"
+            name: "bottom_image_align"
+            widget: "select"
+            options: ["left", "center", "right"]
+            default: "center"
 
   - name: "homepage"
     label: "Home Page Settings"
@@ -82,9 +152,12 @@ collections:
         label: "Hero Slideshow"
         name: "home_settings"
         fields:
-          - {label: "Slideshow Images", name: "slides", widget: "list", field: {label: "Image", name: "image", widget: "image"}}
+          - label: "Slideshow Images"
+            name: "slides"
+            widget: "list"
+            field: {label: "Image", name: "image", widget: "image"}
 
- - name: "projects"
+  - name: "projects"
     label: "Projects (Portfolio)"
     folder: "content/projects"
     create: true
@@ -96,6 +169,4 @@ collections:
       - {label: "Company / Client (Optional)", name: "company", widget: "string", required: false}
       - {label: "Grid Thumbnail Image", name: "thumbnail", widget: "image"}
       - {label: "Project Description", name: "body", widget: "markdown", required: false}
-      - {label: "Description Font Size", name: "font_size", widget: "number", default: 18}
-      - {label: "Gallery Images", name: "gallery", widget: "list", field: {label: "Image", name: "image", widget: "image"}}
-      
+      - {label: "Description Font Size", name: "font_size", widget: "number", default:
