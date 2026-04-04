@@ -1,0 +1,10 @@
+{
+  "title": "Project  test 1",
+  "thumbnail": "/images/scav1 (3).jpg",
+  "body": "Test description",
+  "font_size": 18,
+  "gallery": [
+    "/images/scav1 (3).jpg",
+    "/images/scav1 (2).jpg"
+  ]
+}
