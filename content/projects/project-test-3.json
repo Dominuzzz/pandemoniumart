@@ -1,0 +1,11 @@
+{
+  "title": "Project test 3",
+  "thumbnail": "/images/scav1 (2).jpg",
+  "body": "Project test 3 bla bla",
+  "font_size": 18,
+  "gallery": [
+    "/images/scav1 (1).jpg",
+    "/images/scav1 (3).jpg",
+    "/images/scav1 (2).jpg"
+  ]
+}
