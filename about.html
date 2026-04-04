@@ -25,18 +25,12 @@
 </head>
 <body class="w-full relative">
 
-    <nav class="fixed top-0 w-full flex justify-between items-start px-12 py-10 z-50 bg-[#050505]/90 backdrop-blur-md border-b border-white/5">
-        <a href="home.html" class="text-3xl font-black uppercase italic tracking-tighter">Pandemonium Art</a>
+    <nav class="absolute top-0 w-full flex justify-between items-start px-12 py-12 z-50">
+        <a href="home.html" class="text-3xl font-black uppercase italic tracking-tighter" style="text-shadow: 0px 4px 15px rgba(0,0,0,1);">Pandemonium Art</a>
+        
         <div class="flex gap-10 mt-2">
-            <a href="about.html" id="link-about" class="nav-link text-white">About</a>
-            <div class="dropdown relative">
-                <span id="label-personal" class="nav-link text-gray-400 pb-4 block">Personal</span>
-                <div id="drop-personal" class="dropdown-menu"></div>
-            </div>
-            <div class="dropdown relative">
-                <span id="label-games" class="nav-link text-gray-400 pb-4 block">Games</span>
-                <div id="drop-games" class="dropdown-menu"></div>
-            </div>
+            <a href="about.html" id="link-about" class="nav-link text-gray-400">About</a>
+            <a href="portfolio.html" id="link-portfolio" class="nav-link text-gray-400">Portfolio</a>
             <a href="#" id="link-shop" target="_blank" class="nav-link text-gray-400">Shop</a>
         </div>
     </nav>
@@ -81,9 +75,9 @@
         <img id="cms-bottom-image" src="" alt="Featured Art" class="h-auto max-h-[600px] object-cover filter brightness-75 hover:brightness-100 transition duration-700">
     </div>
 
-    <footer class="w-full flex justify-between items-end px-12 py-12 border-t border-white/5">
-        <div class="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-600">&copy; 2026 Pandemonium Art</div>
-        <div id="footer-socials" class="flex gap-8"></div>
+    <footer class="absolute bottom-0 w-full flex justify-between items-end px-12 py-12 z-10 pointer-events-none">
+        <div class="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-600 pointer-events-auto">&copy; 2026 Pandemonium Art</div>
+        <div id="footer-socials" class="flex gap-8 pointer-events-auto"></div>
     </footer>
 
     <script>
