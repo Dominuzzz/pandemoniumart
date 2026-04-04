@@ -3,5 +3,14 @@
   "label_portfolio": "Portfolio",
   "label_shop": "Shop",
   "shop_url": "https://www.inprnt.com/gallery/dominus/",
-  "portfolio_order": []
+  "portfolio_order": [
+    {
+      "label": "Project  test 1",
+      "slug": "project-test-1"
+    },
+    {
+      "label": "Project test second",
+      "slug": "project-test-second"
+    }
+  ]
 }
