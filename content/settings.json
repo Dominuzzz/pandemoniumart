@@ -13,12 +13,16 @@
       "slug": "project-test-1"
     },
     {
-      "label": "Test 3",
+      "label": "Demeo: Reign of Madness",
       "slug": "project-test-3"
     },
     {
       "label": "Game Art",
       "slug": "game-art"
+    },
+    {
+      "label": "Songs of Conquest",
+      "slug": "project-4"
     }
   ]
 }
