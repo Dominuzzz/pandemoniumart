@@ -1,0 +1,10 @@
+{
+  "title": "Thief",
+  "company": "Personal Project",
+  "thumbnail": "/images/thiefthumb.jpg",
+  "body": "Thief fan art and commercial illustration.",
+  "font_size": 18,
+  "gallery": [
+    "/images/hero07.jpg"
+  ]
+}
