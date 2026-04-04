@@ -8,16 +8,10 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'DM Sans', sans-serif; background-color: #050505; color: #e5e5e5; }
-        
-        /* Navigation Styles */
         .nav-link { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; transition: 0.3s; cursor: pointer; }
         .nav-link:hover { color: #fff; }
-        .dropdown-menu { display: none; position: absolute; top: 100%; left: -10px; background: rgba(5,5,5,0.95); backdrop-filter: blur(15px); min-width: 180px; border: 1px solid rgba(255,255,255,0.1); padding: 10px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .dropdown:hover .dropdown-menu { display: block; }
-        .dropdown-item { display: block; padding: 12px 20px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: #888; transition: 0.3s; }
-        .dropdown-item:hover { color: #fff; background: rgba(255,255,255,0.05); }
-
-        /* Gallery Image Styles (Ian Chiew Style) */
+        
+        /* Gallery Styles */
         .gallery-img { width: 100%; height: auto; margin-bottom: 2rem; cursor: zoom-in; filter: brightness(90%); transition: 0.5s ease; }
         .gallery-img:hover { filter: brightness(100%); }
 
@@ -27,25 +21,18 @@
         .lightbox-btn { position: absolute; top: 50%; transform: translateY(-50%); font-size: 50px; color: white; opacity: 0.2; transition: 0.3s; cursor: pointer; padding: 40px; user-select: none; }
         .lightbox-btn:hover { opacity: 1; }
         
-        /* Rich Text Formatting for Description */
+        /* Rich Text Formatting */
         #proj-body a { color: #fff; text-decoration: underline; text-underline-offset: 4px; }
         #proj-body p { margin-bottom: 1.5rem; }
     </style>
 </head>
-<body class="w-full">
+<body class="w-full relative">
 
-    <nav class="fixed top-0 w-full flex justify-between items-start px-12 py-10 z-50 bg-[#050505]/80 backdrop-blur-md border-b border-white/5">
+    <nav class="fixed top-0 w-full flex justify-between items-start px-12 py-10 z-50 bg-[#050505]/90 backdrop-blur-md border-b border-white/5">
         <a href="home.html" class="text-3xl font-black uppercase italic tracking-tighter">Pandemonium Art</a>
         <div class="flex gap-10 mt-2">
             <a href="about.html" id="link-about" class="nav-link text-gray-400">About</a>
-            <div class="dropdown relative">
-                <span id="label-personal" class="nav-link text-gray-400 pb-4 block">Personal</span>
-                <div id="drop-personal" class="dropdown-menu"></div>
-            </div>
-            <div class="dropdown relative">
-                <span id="label-games" class="nav-link text-gray-400 pb-4 block">Games</span>
-                <div id="drop-games" class="dropdown-menu"></div>
-            </div>
+            <a href="portfolio.html" id="link-portfolio" class="nav-link text-white">Portfolio</a>
             <a href="#" id="link-shop" target="_blank" class="nav-link text-gray-400">Shop</a>
         </div>
     </nav>
@@ -66,9 +53,7 @@
     </div>
 
     <footer class="w-full flex justify-between items-end px-12 py-12 border-t border-white/5">
-        <div class="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-600">
-            &copy; 2026 Pandemonium Art
-        </div>
+        <div class="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-600">&copy; 2026 Pandemonium Art</div>
         <div id="footer-socials" class="flex gap-8"></div>
     </footer>
 
@@ -76,50 +61,50 @@
         let currentImages = [];
         let currentIndex = 0;
 
+        const formatImg = (url) => {
+            if (!url) return '';
+            if (url.startsWith('http')) return url;
+            return '/' + url.replace(/^\/+/, ''); 
+        };
+
         async function initProject() {
+            const cacheBust = '?v=' + Date.now();
+
+            // 1. Navigation & Socials
             try {
-                // 1. LOAD NAVIGATION & SETTINGS
-                const settingsRes = await fetch('content/settings.json');
+                const settingsRes = await fetch('content/settings.json' + cacheBust);
                 const settings = await settingsRes.json();
+                document.getElementById('link-about').innerText = settings.label_about || "About";
+                document.getElementById('link-portfolio').innerText = settings.label_portfolio || "Portfolio";
+                document.getElementById('link-shop').innerText = settings.label_shop || "Shop";
+                document.getElementById('link-shop').href = settings.shop_url || "#";
 
-                document.getElementById('link-about').innerText = settings.label_about;
-                document.getElementById('label-personal').innerText = settings.label_personal;
-                document.getElementById('label-games').innerText = settings.label_games;
-                document.getElementById('link-shop').innerText = settings.label_shop;
-                document.getElementById('link-shop').href = settings.shop_url;
-
-                const dropPers = document.getElementById('drop-personal');
-                settings.nav_personal.forEach(p => {
-                    dropPers.innerHTML += `<a href="project.html?type=personal&id=${p.slug}" class="dropdown-item">${p.label}</a>`;
-                });
-
-                const dropGames = document.getElementById('drop-games');
-                settings.nav_games.forEach(p => {
-                    dropGames.innerHTML += `<a href="project.html?type=games&id=${p.slug}" class="dropdown-item">${p.label}</a>`;
-                });
-
+                const aboutRes = await fetch('content/about.json' + cacheBust);
+                const aboutData = await aboutRes.json();
                 const footSocials = document.getElementById('footer-socials');
-                settings.socials.forEach(s => {
-                    footSocials.innerHTML += `<a href="${s.url}" target="_blank" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors">${s.platform}</a>`;
-                });
+                if (aboutData.socials) {
+                    aboutData.socials.forEach(s => {
+                        footSocials.innerHTML += `<a href="${s.url}" target="_blank" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors">${s.platform}</a>`;
+                    });
+                }
+            } catch (e) { console.warn("Layout failed:", e); }
 
-                // 2. LOAD PROJECT DATA
+            // 2. Load Project Data
+            try {
                 const params = new URLSearchParams(window.location.search);
-                const type = params.get('type'); 
                 const id = params.get('id');
 
-                if(!type || !id) {
-                    window.location.href = 'home.html';
+                if(!id) {
+                    window.location.href = 'portfolio.html';
                     return;
                 }
 
-                const projRes = await fetch(`content/${type}/${id}.json`);
+                const projRes = await fetch(`content/projects/${id}.json` + cacheBust);
                 const data = await projRes.json();
 
                 document.title = `${data.title} | Pandemonium Art`;
                 document.getElementById('proj-title').innerText = data.title;
                 
-                // Set custom body font size from CMS
                 const bodyEl = document.getElementById('proj-body');
                 bodyEl.innerHTML = data.body || ""; 
                 bodyEl.style.fontSize = (data.font_size || 18) + 'px';
@@ -129,7 +114,7 @@
 
                 currentImages.forEach((imgUrl, idx) => {
                     const img = document.createElement('img');
-                    img.src = imgUrl.startsWith('http') ? imgUrl : '/' + imgUrl;
+                    img.src = formatImg(imgUrl);
                     img.className = "gallery-img";
                     img.onclick = () => openLightbox(idx);
                     galleryContainer.appendChild(img);
@@ -137,47 +122,39 @@
 
             } catch (e) {
                 console.error("Error loading project:", e);
-                // If a project file doesn't exist yet, show a friendly message
-                document.getElementById('proj-title').innerText = "Project Coming Soon";
+                document.getElementById('proj-title').innerText = "Project Not Found";
             }
         }
 
         // Lightbox Functions
         function openLightbox(index) {
             currentIndex = index;
-            document.getElementById('lightbox-img').src = currentImages[currentIndex];
+            document.getElementById('lightbox-img').src = formatImg(currentImages[currentIndex]);
             document.getElementById('lightbox').style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Stop scrolling
+            document.body.style.overflow = 'hidden';
         }
-
         function closeLightbox(e) {
             if (e.target.id === "lightbox" || e.target.id === "lightbox-img") {
                 document.getElementById('lightbox').style.display = 'none';
                 document.body.style.overflow = 'auto';
             }
         }
-
         function nextImg(e) {
             e.stopPropagation();
             currentIndex = (currentIndex + 1) % currentImages.length;
-            document.getElementById('lightbox-img').src = currentImages[currentIndex];
+            document.getElementById('lightbox-img').src = formatImg(currentImages[currentIndex]);
         }
-
         function prevImg(e) {
             e.stopPropagation();
             currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-            document.getElementById('lightbox-img').src = currentImages[currentIndex];
+            document.getElementById('lightbox-img').src = formatImg(currentImages[currentIndex]);
         }
 
-        // Keyboard Navigation
         document.addEventListener('keydown', (e) => {
             if (document.getElementById('lightbox').style.display === 'flex') {
                 if (e.key === "ArrowRight") nextImg(e);
                 if (e.key === "ArrowLeft") prevImg(e);
-                if (e.key === "Escape") {
-                    document.getElementById('lightbox').style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
+                if (e.key === "Escape") closeLightbox({target: {id: 'lightbox'}});
             }
         });
 
