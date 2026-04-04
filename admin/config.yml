@@ -21,7 +21,19 @@ collections:
           - {label: "Menu: Portfolio Label", name: "label_portfolio", widget: "string", default: "Portfolio"}
           - {label: "Menu: Shop Label", name: "label_shop", widget: "string", default: "Shop"}
           - {label: "Shop URL", name: "shop_url", widget: "string"}
-          - {label: "Portfolio Manual Order", name: "portfolio_order", widget: "list", fields: [{label: "Project Title", name: "label", widget: "string"}, {label: "Project Slug (Filename)", name: "slug", widget: "string"}]}
+          - label: "Portfolio Manual Order"
+            name: "portfolio_order"
+            widget: "list"
+            summary: "{{label}}" 
+            fields:
+              - {label: "Project Display Name", name: "label", widget: "string"}
+              - label: "Select Project"
+                name: "slug"
+                widget: "relation"
+                collection: "projects"
+                search_fields: ["title"]
+                value_field: "{{slug}}"
+                display_fields: ["title"]
 
   - name: "portfoliopage"
     label: "Portfolio Page Settings"
