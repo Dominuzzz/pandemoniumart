@@ -49,9 +49,17 @@
             const cacheBust = '?v=' + Date.now();
             try {
                 // 1. Intro Text
+               try {
                 const introRes = await fetch('content/portfolio_page.json' + cacheBust);
                 const introData = await introRes.json();
-                document.getElementById('portfolio-intro').innerHTML = introData.intro_text || "";
+                
+                // This fix allows the Markdown/HTML from the dashboard to render properly
+                const introEl = document.getElementById('portfolio-intro');
+                if (introData.intro_text) {
+                    // We check if it's markdown or raw HTML and clean it up
+                    introEl.innerHTML = introData.intro_text.replace(/\n/g, '<br>');
+                }
+            } catch (e) { console.warn("No intro text found."); }
 
                 // 2. Load Nav & Socials (Synced from About)
                 const settingsRes = await fetch('content/settings.json' + cacheBust);
