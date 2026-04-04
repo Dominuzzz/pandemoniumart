@@ -11,16 +11,18 @@
         .nav-link { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; transition: 0.3s; cursor: pointer; }
         .nav-link:hover { color: #fff; }
         
-        /* Grid Hover & Aspect Ratio Effects */
         .project-card { transition: transform 0.5s ease; cursor: pointer; }
         .project-card:hover .project-thumb { filter: brightness(1.1); transform: scale(1.02); }
         
-        /* Changed to 3/4 aspect ratio for taller images */
+        /* 3/4 Portrait Aspect Ratio */
         .project-thumb { width: 100%; aspect-ratio: 3/4; object-fit: cover; filter: brightness(0.85); transition: all 0.5s ease; }
         
-        /* Typography Updates */
+        /* White Title, Grey Company */
         .project-title { margin-top: 1.25rem; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #fff; transition: color 0.3s; }
-        .project-company { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #888; margin-top: 0.25rem; }
+        .project-company { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #666; margin-top: 0.25rem; }
+        
+        #portfolio-intro h1 { font-size: 48px; font-weight: 900; font-style: italic; text-transform: uppercase; margin-bottom: 1rem;}
+        #portfolio-intro p { color: #888; font-size: 18px; }
     </style>
 </head>
 <body class="w-full relative">
@@ -36,7 +38,6 @@
 
     <main class="max-w-7xl mx-auto px-12 pt-40 pb-32">
         <div id="portfolio-intro" class="mb-20"></div>
-        
         <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-16"></div>
     </main>
 
@@ -58,9 +59,8 @@
                 // 1. Intro Text
                 const introRes = await fetch('content/portfolio_page.json' + cacheBust);
                 const introData = await introRes.json();
-                const introEl = document.getElementById('portfolio-intro');
                 if (introData.intro_text) {
-                    introEl.innerHTML = introData.intro_text.replace(/\n/g, '<br>');
+                    document.getElementById('portfolio-intro').innerHTML = introData.intro_text;
                 }
 
                 // 2. Load Nav & Socials
@@ -80,7 +80,7 @@
                     });
                 }
 
-                // 3. Load 4-Column Grid Data
+                // 3. Load Grid
                 const grid = document.getElementById('portfolio-grid');
                 if (settings.portfolio_order) {
                     for (const proj of settings.portfolio_order) {
@@ -88,10 +88,7 @@
                         try {
                             const projRes = await fetch(`content/projects/${slug}.json` + cacheBust);
                             const projData = await projRes.json();
-                            
-                            // Check if company exists, if so render the grey text
                             let companyHtml = projData.company ? `<div class="project-company">${projData.company}</div>` : '';
-                            
                             grid.innerHTML += `
                                 <a href="project.html?id=${slug}" class="project-card block">
                                     <div class="overflow-hidden bg-[#111]">
