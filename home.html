@@ -81,7 +81,7 @@
                 }
             } catch (e) { console.warn("Slideshow failed to load:", e); }
 
-            // 2. LOAD NAV SETTINGS
+            // 2. LOAD UNIFIED NAV LABELS
             try {
                 const settingsRes = await fetch('content/settings.json' + cacheBust);
                 const settings = await settingsRes.json();
@@ -91,12 +91,13 @@
                 document.getElementById('link-shop').href = settings.shop_url || "#";
             } catch (e) { console.warn("Nav failed:", e); }
 
-            // 3. LOAD FOOTER SOCIALS FROM ABOUT.JSON
+            // 3. LOAD FOOTER SOCIALS SYNCED FROM ABOUT.JSON
             try {
                 const aboutRes = await fetch('content/about.json' + cacheBust);
                 const aboutData = await aboutRes.json();
                 const footSocials = document.getElementById('footer-socials');
                 if (aboutData.socials) {
+                    footSocials.innerHTML = '';
                     aboutData.socials.forEach(s => {
                         footSocials.innerHTML += `<a href="${s.url}" target="_blank" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors" style="text-shadow: 0px 2px 5px rgba(0,0,0,0.8);">${s.platform}</a>`;
                     });
