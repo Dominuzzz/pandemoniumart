@@ -1,25 +1,7 @@
 {
   "label_about": "About",
-  "label_personal": "Personal",
-  "label_games": "Games",
+  "label_portfolio": "Portfolio",
   "label_shop": "Shop",
   "shop_url": "https://www.inprnt.com/gallery/dominus/",
-  "nav_games": [
-    {
-      "label": "Battlemarked",
-      "slug": "Battlemarked"
-    }
-  ],
-  "nav_personal": [
-    {
-      "label": "Scavenger",
-      "slug": "Scavenger"
-    }
-  ],
-  "socials": [
-    {
-      "platform": "Bluesky",
-      "url": "http://dominuz.bsky.social/"
-    }
-  ]
+  "portfolio_order": []
 }
