@@ -1,10 +1,14 @@
 {
-  "title": "Project 4",
-  "company": "company",
-  "thumbnail": "/images/scav1 (3).jpg",
-  "body": "edsfdsf sd",
+  "title": "Songs of Conquest",
+  "company": "Lava Potion",
+  "thumbnail": "/images/image002-1.jpg",
+  "body": "Concept Artist",
   "font_size": 18,
   "gallery": [
-    "/images/scav1 (2).jpg"
+    "/images/image001-1.jpg",
+    "/images/image008-1.jpg",
+    "/images/image009-1.jpg",
+    "/images/image010-1.jpg",
+    "/images/image011-1.jpg"
   ]
 }
