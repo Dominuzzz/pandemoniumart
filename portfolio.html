@@ -14,8 +14,8 @@
         .project-card { transition: transform 0.5s ease; cursor: pointer; }
         .project-card:hover .project-thumb { filter: brightness(1.1); transform: scale(1.02); }
         
-        /* 3/4 Portrait Aspect Ratio */
-        .project-thumb { width: 100%; aspect-ratio: 3/4; object-fit: cover; filter: brightness(0.85); transition: all 0.5s ease; }
+        /* Changed to 16/9 Landscape Aspect Ratio */
+        .project-thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; filter: brightness(0.85); transition: all 0.5s ease; }
         
         /* White Title, Grey Company */
         .project-title { margin-top: 1.25rem; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #fff; transition: color 0.3s; }
@@ -36,9 +36,9 @@
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-12 pt-40 pb-32">
+    <main class="w-full mx-auto px-12 pt-40 pb-32">
         <div id="portfolio-intro" class="mb-20"></div>
-        <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-16"></div>
+        <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16"></div>
     </main>
 
     <footer class="w-full flex justify-between items-end px-12 py-12 border-t border-white/5">
@@ -63,7 +63,7 @@
                     document.getElementById('portfolio-intro').innerHTML = introData.intro_text;
                 }
 
-                // 2. Load Nav & Socials
+                // 2. Load Nav & Socials (Synced from About)
                 const settingsRes = await fetch('content/settings.json' + cacheBust);
                 const settings = await settingsRes.json();
                 document.getElementById('link-about').innerText = settings.label_about || "About";
