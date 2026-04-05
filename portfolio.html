@@ -4,66 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pandemonium Art | Portfolio</title>
+    
+    <meta property="og:title" content="Pandemonium Art | Portfolio">
+    <meta property="og:description" content="Art Direction, Visual Development, and Concept Art.">
+    <meta property="og:image" content="https://www.pandemoniumart.net/images/social-share.jpg">
+    <meta property="og:url" content="https://www.pandemoniumart.net">
+    <meta name="twitter:card" content="summary_large_image">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'DM Sans', sans-serif; background-color: #050505; color: #e5e5e5; }
         .nav-link { font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; transition: 0.3s; cursor: pointer; }
         .nav-link:hover { color: #fff; }
-        
         .project-card { transition: transform 0.5s ease; cursor: pointer; }
         .project-card:hover .project-thumb { filter: brightness(1.1); transform: scale(1.02); }
-        
-        /* Changed to 16/9 Landscape Aspect Ratio */
         .project-thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; filter: brightness(0.85); transition: all 0.5s ease; }
-        
-        /* White Title, Grey Company */
         .project-title { margin-top: 1.25rem; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #fff; transition: color 0.3s; }
         .project-company { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #666; margin-top: 0.25rem; }
-        
-        #portfolio-intro h1 { font-size: 48px; font-weight: 900; text-transform: uppercase; margin-bottom: 1rem;}
-        #portfolio-intro p { color: #888; font-size: 18px; }
+        #portfolio-intro h1 { font-size: 36px; font-weight: 900; text-transform: uppercase; margin-bottom: 1rem;}
+        @media (min-width: 768px) { #portfolio-intro h1 { font-size: 48px; } }
+        #portfolio-intro p { color: #888; font-size: 16px; }
+        @media (min-width: 768px) { #portfolio-intro p { font-size: 18px; } }
     </style>
 </head>
 <body class="w-full relative">
 
-    <nav class="fixed top-0 w-full flex justify-between items-start px-12 py-10 z-50 bg-[#050505]/90 backdrop-blur-md border-b border-white/5">
-        <a href="index.html" class="text-3xl font-black uppercase tracking-tighter">Pandemonium Art</a>
-        <div class="flex gap-10 mt-2">
+    <nav class="fixed top-0 w-full flex flex-col sm:flex-row justify-between items-center sm:items-start px-6 md:px-12 py-6 md:py-10 z-50 bg-[#050505]/90 backdrop-blur-md border-b border-white/5">
+        <a href="index.html" class="text-2xl md:text-3xl font-black uppercase tracking-tighter text-white">Pandemonium Art</a>
+        <div class="flex gap-6 md:gap-10 mt-4 sm:mt-2">
             <a href="about.html" id="link-about" class="nav-link text-gray-400">About</a>
             <a href="portfolio.html" id="link-portfolio" class="nav-link text-white">Portfolio</a>
             <a href="#" id="link-shop" target="_blank" class="nav-link text-gray-400">Shop</a>
         </div>
     </nav>
 
-    <main class="w-full mx-auto px-12 pt-40 pb-32">
-        <div id="portfolio-intro" class="mb-20"></div>
-        <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16"></div>
+    <main class="w-full mx-auto px-6 md:px-12 pt-32 md:pt-40 pb-20 md:pb-32">
+        <div id="portfolio-intro" class="mb-12 md:mb-20 text-center sm:text-left"></div>
+        <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 md:gap-y-16"></div>
     </main>
 
-    <footer class="w-full flex justify-between items-end px-12 py-12 border-t border-white/5">
+    <footer class="w-full flex flex-col sm:flex-row justify-between items-center sm:items-end px-6 md:px-12 py-8 md:py-12 border-t border-white/5 gap-4 sm:gap-0">
         <div class="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-600">&copy; 2026 Pandemonium Art</div>
-        <div id="footer-socials" class="flex gap-8"></div>
+        <div id="footer-socials" class="flex gap-6 md:gap-8"></div>
     </footer>
 
     <script>
-        const formatImg = (url) => {
-            if (!url) return '';
-            if (url.startsWith('http')) return url;
-            return '/' + url.replace(/^\/+/, ''); 
-        };
-
+        const formatImg = (url) => { if (!url) return ''; if (url.startsWith('http')) return url; return '/' + url.replace(/^\/+/, ''); };
         async function initPortfolio() {
             const cacheBust = '?v=' + Date.now();
             try {
-                // 1. Intro Text
                 const introRes = await fetch('content/portfolio_page.json' + cacheBust);
                 const introData = await introRes.json();
-                if (introData.intro_text) {
-                    document.getElementById('portfolio-intro').innerHTML = introData.intro_text;
-                }
+                if (introData.intro_text) { document.getElementById('portfolio-intro').innerHTML = introData.intro_text; }
 
-                // 2. Load Nav & Socials (Synced from About)
                 const settingsRes = await fetch('content/settings.json' + cacheBust);
                 const settings = await settingsRes.json();
                 document.getElementById('link-about').innerText = settings.label_about || "About";
@@ -80,7 +74,6 @@
                     });
                 }
 
-                // 3. Load Grid
                 const grid = document.getElementById('portfolio-grid');
                 if (settings.portfolio_order) {
                     for (const proj of settings.portfolio_order) {
@@ -91,9 +84,7 @@
                             let companyHtml = projData.company ? `<div class="project-company">${projData.company}</div>` : '';
                             grid.innerHTML += `
                                 <a href="project.html?id=${slug}" class="project-card block">
-                                    <div class="overflow-hidden bg-[#111]">
-                                        <img src="${formatImg(projData.thumbnail)}" alt="${projData.title}" class="project-thumb">
-                                    </div>
+                                    <div class="overflow-hidden bg-[#111]"><img src="${formatImg(projData.thumbnail)}" alt="${projData.title}" class="project-thumb"></div>
                                     <h3 class="project-title">${projData.title}</h3>
                                     ${companyHtml}
                                 </a>`;
