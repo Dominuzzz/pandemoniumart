@@ -1,0 +1,10 @@
+{
+  "title": "Scavenger",
+  "company": "Personal project",
+  "thumbnail": "/images/hero05.jpg",
+  "body": "Co creator",
+  "font_size": 18,
+  "gallery": [
+    "/images/hero09.jpg"
+  ]
+}
