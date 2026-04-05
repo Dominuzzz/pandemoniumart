@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pandemonium Art | Home</title>
+    
+    <meta property="og:title" content="Pandemonium Art | Portfolio">
+    <meta property="og:description" content="Art Direction, Visual Development, and Concept Art.">
+    <meta property="og:image" content="https://www.pandemoniumart.net/images/social-share.jpg">
+    <meta property="og:url" content="https://www.pandemoniumart.net">
+    <meta name="twitter:card" content="summary_large_image">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <style>
@@ -13,18 +20,8 @@
         .slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 2s ease-in-out; z-index: -1; }
         .slide.active { opacity: 1; }
         .overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.7) 100%); z-index: 0; pointer-events: none; }
-        
-        /* Glassmorphism Box */
-        .accent-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-        .accent-box:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
+        .accent-box { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); transition: all 0.3s ease; }
+        .accent-box:hover { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); }
     </style>
 </head>
 <body class="h-screen w-full relative">
@@ -32,45 +29,37 @@
     <div id="slideshow-container"></div>
     <div class="overlay"></div>
 
-    <nav class="absolute top-0 w-full flex justify-between items-start px-12 py-10 z-50">
-        <a href="index.html" class="text-3xl font-black uppercase tracking-tighter" style="text-shadow: 0px 4px 15px rgba(0,0,0,1);">Pandemonium Art</a>
-        
-        <div class="flex gap-10 mt-2">
+    <nav class="absolute top-0 w-full flex flex-col sm:flex-row justify-between items-center sm:items-start px-6 md:px-12 py-6 md:py-10 z-50">
+        <a href="index.html" class="text-2xl md:text-3xl font-black uppercase tracking-tighter text-white text-center" style="text-shadow: 0px 4px 15px rgba(0,0,0,1);">Pandemonium Art</a>
+        <div class="flex gap-6 md:gap-10 mt-4 sm:mt-2">
             <a href="about.html" id="link-about" class="nav-link text-gray-400">About</a>
             <a href="portfolio.html" id="link-portfolio" class="nav-link text-gray-400">Portfolio</a>
             <a href="#" id="link-shop" target="_blank" class="nav-link text-gray-400">Shop</a>
         </div>
     </nav>
 
-    <div class="absolute top-1/2 left-12 transform -translate-y-1/2 z-20 pointer-events-auto">
-        <a href="portfolio.html" class="accent-box p-10 group inline-block cursor-pointer">
-            <h3 class="text-[20px] font-bold uppercase tracking-widest text-white group-hover:translate-x-2 transition-transform duration-300" style="text-shadow: 0px 2px 5px rgba(0,0,0,0.8);">
-                Art Direction <span class="opacity-40 mx-2">|</span> Visual Development <span class="opacity-40 mx-2">|</span> Concept Art
+    <div class="absolute top-1/2 left-6 right-6 sm:right-auto md:left-12 transform -translate-y-1/2 z-20 pointer-events-auto text-center sm:text-left">
+        <a href="portfolio.html" class="accent-box p-6 md:p-10 group inline-block cursor-pointer">
+            <p class="text-[12px] md:text-[15px] font-bold uppercase tracking-widest opacity-50 mb-3 md:mb-4">Specialties</p>
+            <h3 class="text-[16px] md:text-[20px] font-bold uppercase tracking-widest text-white group-hover:translate-x-2 transition-transform duration-300" style="text-shadow: 0px 2px 5px rgba(0,0,0,0.8);">
+                Art Direction <span class="opacity-40 mx-2">|</span> Visual Dev <span class="opacity-40 mx-2 md:hidden"><br></span><span class="opacity-40 mx-2 hidden md:inline">|</span> Concept Art
             </h3>
         </a>
     </div>
 
-    <footer class="absolute bottom-0 w-full flex justify-between items-end px-12 py-12 z-10 pointer-events-none">
+    <footer class="absolute bottom-0 w-full flex flex-col sm:flex-row justify-between items-center sm:items-end px-6 md:px-12 py-6 md:py-12 z-10 pointer-events-none gap-4 sm:gap-0">
         <div class="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-600 pointer-events-auto">&copy; 2026 Pandemonium Art</div>
-        <div id="footer-socials" class="flex gap-8 pointer-events-auto"></div>
+        <div id="footer-socials" class="flex gap-6 md:gap-8 pointer-events-auto"></div>
     </footer>
 
     <script>
-        const formatImg = (url) => {
-            if (!url) return '';
-            if (url.startsWith('http')) return url;
-            return '/' + url.replace(/^\/+/, ''); 
-        };
-
+        const formatImg = (url) => { if (!url) return ''; if (url.startsWith('http')) return url; return '/' + url.replace(/^\/+/, ''); };
         async function initPage() {
             const cacheBust = '?v=' + Date.now();
-
-            // 1. LOAD SLIDESHOW
             try {
                 const homeRes = await fetch('content/home.json' + cacheBust);
                 const homeData = await homeRes.json();
                 const container = document.getElementById('slideshow-container');
-                
                 if (homeData.slides && homeData.slides.length > 0) {
                     let slideUrls = [...homeData.slides];
                     if (slideUrls.length > 2) {
@@ -81,14 +70,12 @@
                         }
                         slideUrls.unshift(firstImage);
                     }
-
                     slideUrls.forEach((imgUrl, index) => {
                         const img = document.createElement('img');
                         img.src = formatImg(imgUrl);
                         img.className = index === 0 ? 'slide active' : 'slide';
                         container.appendChild(img);
                     });
-
                     const slides = document.querySelectorAll('.slide');
                     if (slides.length > 1) {
                         let currentSlide = 0;
@@ -101,7 +88,6 @@
                 }
             } catch (e) { console.warn("Slideshow failed to load:", e); }
 
-            // 2. LOAD UNIFIED NAV LABELS
             try {
                 const settingsRes = await fetch('content/settings.json' + cacheBust);
                 const settings = await settingsRes.json();
@@ -111,7 +97,6 @@
                 document.getElementById('link-shop').href = settings.shop_url || "#";
             } catch (e) { console.warn("Nav failed:", e); }
 
-            // 3. LOAD FOOTER SOCIALS SYNCED FROM ABOUT.JSON
             try {
                 const aboutRes = await fetch('content/about.json' + cacheBust);
                 const aboutData = await aboutRes.json();
@@ -124,7 +109,6 @@
                 }
             } catch (e) { console.warn("Socials failed:", e); }
         }
-
         document.addEventListener("DOMContentLoaded", initPage);
     </script>
 </body>
