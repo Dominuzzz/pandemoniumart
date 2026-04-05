@@ -1,10 +1,19 @@
 {
   "title": "Scavenger",
   "company": "Personal project",
-  "thumbnail": "/images/hero05.jpg",
+  "thumbnail": "/images/scavenger1thumb.jpg",
   "body": "Co creator",
   "font_size": 18,
   "gallery": [
-    "/images/hero09.jpg"
+    "/images/scavenger1 (14).jpg",
+    "/images/scavenger1 (5).jpg",
+    "/images/scavenger1 (6).jpg",
+    "/images/scavenger1 (15).jpg",
+    "/images/scavenger1 (8).jpg",
+    "/images/scavenger1 (7).jpg",
+    "/images/scavenger1 (9).jpg",
+    "/images/scavenger1 (12).jpg",
+    "/images/scavenger1 (21).jpg",
+    "/images/scavenger1 (23).jpg"
   ]
 }
