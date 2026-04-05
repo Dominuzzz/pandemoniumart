@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pandemonium Art | About</title>
+    
+    <meta property="og:title" content="Pandemonium Art | About">
+    <meta property="og:description" content="Art Direction, Visual Development, and Concept Art.">
+    <meta property="og:image" content="https://www.pandemoniumart.net/images/social-share.jpg">
+    <meta property="og:url" content="https://www.pandemoniumart.net">
+    <meta name="twitter:card" content="summary_large_image">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
@@ -11,16 +18,18 @@
         body { font-family: 'DM Sans', sans-serif; background-color: #050505; color: #e5e5e5; }
         .nav-link { font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; transition: 0.3s; cursor: pointer; }
         .nav-link:hover { color: #fff; }
-        .resume-section { margin-bottom: 4rem; }
+        .resume-section { margin-bottom: 3rem; }
+        @media (min-width: 768px) { .resume-section { margin-bottom: 4rem; } }
         .resume-title { font-size: 10px; text-transform: uppercase; letter-spacing: 0.3em; opacity: 0.4; margin-bottom: 1.5rem; font-weight: 700;}
-        .resume-item { display: flex; gap: 2rem; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1.5rem;}
+        .resume-item { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1.5rem;}
+        @media (min-width: 768px) { .resume-item { flex-direction: row; gap: 2rem; } }
         
-        .resume-company { width: 160px; opacity: 0.5; font-size: 13px; flex-shrink: 0; font-weight: 700;}
+        .resume-company { width: 100%; opacity: 0.5; font-size: 13px; flex-shrink: 0; font-weight: 700;}
+        @media (min-width: 768px) { .resume-company { width: 160px; } }
         .resume-role { color: #fff; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;}
         .resume-text { font-size: 15px; font-weight: 400; line-height: 1.6; color: #9ca3af; }
         .resume-projects { font-size: 11px; color: #888; margin-top: 1rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700;}
         
-        /* Rich Text Styling */
         .md-content p { margin-bottom: 0.75rem; }
         .md-content p:last-child { margin-bottom: 0; }
         .md-content ul { list-style-type: disc; margin-left: 1.25rem; margin-bottom: 0.75rem; }
@@ -30,24 +39,24 @@
 </head>
 <body class="w-full relative">
 
-    <nav class="fixed top-0 w-full flex justify-between items-start px-12 py-10 z-50 bg-[#050505]/90 backdrop-blur-md border-b border-white/5">
-        <a href="index.html" class="text-3xl font-black uppercase tracking-tighter">Pandemonium Art</a>
-        <div class="flex gap-10 mt-2">
+    <nav class="fixed top-0 w-full flex flex-col sm:flex-row justify-between items-center sm:items-start px-6 md:px-12 py-6 md:py-10 z-50 bg-[#050505]/90 backdrop-blur-md border-b border-white/5">
+        <a href="index.html" class="text-2xl md:text-3xl font-black uppercase tracking-tighter text-white">Pandemonium Art</a>
+        <div class="flex gap-6 md:gap-10 mt-4 sm:mt-2">
             <a href="about.html" id="link-about" class="nav-link text-white">About</a>
             <a href="portfolio.html" id="link-portfolio" class="nav-link text-gray-400">Portfolio</a>
             <a href="#" id="link-shop" target="_blank" class="nav-link text-gray-400">Shop</a>
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-12 pt-40 pb-20 grid grid-cols-1 md:grid-cols-12 gap-16">
+    <main class="max-w-7xl mx-auto px-6 md:px-12 pt-32 md:pt-40 pb-16 md:pb-20 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
         <div class="md:col-span-5">
             <div class="sticky top-40">
                 <div class="w-full aspect-square overflow-hidden mb-8 border border-white/5">
                     <img id="cms-profile-image" src="" alt="Profile" class="w-full h-full object-cover transform hover:scale-105 transition duration-700">
                 </div>
-                <h1 id="cms-name" class="font-black uppercase italic tracking-tighter mb-4 transition-all duration-300"></h1>
+                <h1 id="cms-name" class="font-black uppercase tracking-tighter mb-4 transition-all duration-300 text-3xl md:text-4xl"></h1>
                 <div id="cms-bio" class="text-sm leading-relaxed text-gray-400 mb-8 md-content"></div>
-                <div class="flex gap-4 mb-10">
+                <div class="flex flex-wrap gap-4 mb-10">
                     <a id="cms-resume-btn" href="#" target="_blank" class="border border-white/20 px-5 py-3 text-[10px] uppercase tracking-widest font-bold text-gray-300 hover:bg-white hover:text-black transition-colors hidden">Resume &darr;</a>
                     <a href="mailto:dominuz@gmail.com" class="border border-white/20 px-5 py-3 text-[10px] uppercase tracking-widest font-bold text-gray-300 hover:bg-white hover:text-black transition-colors">Contact</a>
                 </div>
@@ -62,7 +71,7 @@
             </div>
             <div class="resume-section">
                 <h2 id="cms-title-clients" class="resume-title"></h2>
-                <div id="cms-clients" class="grid grid-cols-2 gap-y-4 gap-x-8 text-15px text-gray-300 md-content"></div>
+                <div id="cms-clients" class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 text-15px text-gray-300 md-content"></div>
             </div>
             <div class="resume-section">
                 <h2 id="cms-title-publications" class="resume-title"></h2>
@@ -75,30 +84,23 @@
         </div>
     </main>
 
-    <div class="max-w-7xl mx-auto px-12 pb-20 flex" id="cms-bottom-image-wrapper">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 pb-16 md:pb-20 flex" id="cms-bottom-image-wrapper">
         <img id="cms-bottom-image" src="" alt="Featured Art" class="h-auto max-h-[600px] object-cover filter brightness-75 hover:brightness-100 transition duration-700">
     </div>
 
-    <footer class="w-full flex justify-between items-end px-12 py-12 border-t border-white/5">
+    <footer class="w-full flex flex-col sm:flex-row justify-between items-center sm:items-end px-6 md:px-12 py-8 md:py-12 border-t border-white/5 gap-4 sm:gap-0">
         <div class="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-600">&copy; 2026 Pandemonium Art</div>
-        <div id="footer-socials" class="flex gap-8"></div>
+        <div id="footer-socials" class="flex gap-6 md:gap-8"></div>
     </footer>
 
     <script>
-        const formatImg = (url) => {
-            if (!url) return '';
-            if (url.startsWith('http')) return url;
-            return '/' + url.replace(/^\/+/, ''); 
-        };
-
-        // Helpers to parse Markdown
+        const formatImg = (url) => { if (!url) return ''; if (url.startsWith('http')) return url; return '/' + url.replace(/^\/+/, ''); };
         const parseMD = (str) => str ? marked.parse(str) : '';
         const parseMDInline = (str) => str ? marked.parseInline(str) : '';
 
         document.addEventListener("DOMContentLoaded", async () => {
             const cacheBust = '?v=' + Date.now();
             try {
-                // 1. GLOBAL SETTINGS
                 const settingsRes = await fetch('content/settings.json' + cacheBust);
                 const settings = await settingsRes.json();
                 document.getElementById('link-about').innerText = settings.label_about || "About";
@@ -106,18 +108,16 @@
                 document.getElementById('link-shop').innerText = settings.label_shop || "Shop";
                 document.getElementById('link-shop').href = settings.shop_url || "#";
 
-                // 2. ABOUT DATA
                 const response = await fetch('content/about.json' + cacheBust);
                 const data = await response.json();
                 
                 const nameEl = document.getElementById('cms-name');
                 nameEl.innerText = data.name || 'Alexandru Negoita';
-                nameEl.style.fontSize = data.name_size || '30px';
+                // Inline styles overrides Tailwind if needed, keep standard sizing otherwise
+                if (window.innerWidth > 768 && data.name_size) { nameEl.style.fontSize = data.name_size; }
+                
                 document.getElementById('cms-profile-image').src = formatImg(data.profile_image);
-                
-                // Bio parsed as Markdown
                 document.getElementById('cms-bio').innerHTML = parseMD(data.bio);
-                
                 document.getElementById('cms-title-experience').innerText = data.title_experience || 'Experience';
                 document.getElementById('cms-title-clients').innerText = data.title_clients || 'Freelance Clients';
                 document.getElementById('cms-title-publications').innerText = data.title_publications || 'Publications';
@@ -129,67 +129,51 @@
                     rBtn.classList.remove('hidden');
                 }
 
-                // Social Sidebar
                 const socCont = document.getElementById('cms-socials');
                 socCont.innerHTML = '';
                 if(data.socials) { 
-                    data.socials.forEach(s => { 
-                        socCont.innerHTML += `<a href="${s.url}" target="_blank" class="text-[11px] font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-colors w-max">${s.platform} &rarr;</a>`; 
-                    }); 
+                    data.socials.forEach(s => { socCont.innerHTML += `<a href="${s.url}" target="_blank" class="text-[11px] font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-colors w-max">${s.platform} &rarr;</a>`; }); 
                 }
 
-                // Experience (With new Role field aligned to Company)
                 const expCont = document.getElementById('cms-experience');
                 expCont.innerHTML = '';
                 if(data.experience) { data.experience.forEach(i => {
                     let roleHtml = i.role ? `<div class="resume-role md-inline">${parseMDInline(i.role)}</div>` : '';
                     let titleHtml = i.title ? `<div class="resume-text md-content">${parseMD(i.title)}</div>` : '';
                     let projHtml = i.projects ? `<div class="resume-projects md-content">${parseMD(i.projects)}</div>` : '';
-                    
                     expCont.innerHTML += `
                         <div class="resume-item">
                             <div class="resume-company md-inline">${parseMDInline(i.company)}</div>
-                            <div class="flex-1">
-                                ${roleHtml}
-                                ${titleHtml}
-                                ${projHtml}
-                            </div>
+                            <div class="flex-1">${roleHtml}${titleHtml}${projHtml}</div>
                         </div>`;
                 }); }
 
-                // Clients
                 const cliCont = document.getElementById('cms-clients');
                 cliCont.innerHTML = '';
                 if(data.clients) { data.clients.forEach(c => { cliCont.innerHTML += `<div class="md-inline">${parseMDInline(c.name || c)}</div>`; }); }
 
-                // Publications
                 const pubCont = document.getElementById('cms-publications');
                 pubCont.innerHTML = '';
                 if(data.publications) { data.publications.forEach(i => { 
                     pubCont.innerHTML += `<div class="resume-item"><div class="resume-company md-inline">${parseMDInline(i.company)}</div><div class="resume-text text-gray-200 md-inline">${parseMDInline(i.title)}</div></div>`; 
                 }); }
 
-                // Education
                 const eduCont = document.getElementById('cms-education');
                 eduCont.innerHTML = '';
                 if(data.education) { data.education.forEach(i => { 
                     eduCont.innerHTML += `<div class="resume-item"><div class="resume-company md-inline">${parseMDInline(i.company)}</div><div class="resume-text text-gray-200 md-inline">${parseMDInline(i.title)}</div></div>`; 
                 }); }
 
-                // Bottom Art
                 const bImg = document.getElementById('cms-bottom-image');
                 bImg.src = formatImg(data.bottom_image);
                 bImg.style.width = data.bottom_image_width || '100%';
                 const bWrap = document.getElementById('cms-bottom-image-wrapper');
                 bWrap.style.justifyContent = data.bottom_image_align === 'left' ? 'flex-start' : (data.bottom_image_align === 'right' ? 'flex-end' : 'center');
 
-                // 3. Footer Socials
                 const footSocials = document.getElementById('footer-socials');
                 footSocials.innerHTML = '';
                 if (data.socials) {
-                    data.socials.forEach(s => {
-                        footSocials.innerHTML += `<a href="${s.url}" target="_blank" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors">${s.platform}</a>`;
-                    });
+                    data.socials.forEach(s => { footSocials.innerHTML += `<a href="${s.url}" target="_blank" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors">${s.platform}</a>`; });
                 }
 
             } catch (e) { console.error("CMS Load Error:", e); }
