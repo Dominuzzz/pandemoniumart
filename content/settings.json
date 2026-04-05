@@ -25,16 +25,16 @@
       "slug": "game-art"
     },
     {
-      "label": "Thief",
-      "slug": "thief"
-    },
-    {
       "label": "Scavenger",
       "slug": "scavenger"
     },
     {
       "label": "Scavenger: Crimson Catalyst",
       "slug": "scavenger-crimson-catalyst"
+    },
+    {
+      "label": "Thief",
+      "slug": "thief"
     }
   ]
 }
