@@ -71,28 +71,24 @@
   "title_publications": "Publications",
   "publications": [
     {
-      "company": "Spectrum",
-      "title": "Spectrum 30: The Best in Contemporary Fantastic Art (2024)"
-    },
-    {
       "company": "ImagineFX",
-      "title": "Issue (2010)"
+      "title": "ImagineFX (2010)"
     },
     {
-      "company": "Ballistic Publishing",
-      "title": "Exposé 9 (2011), Exposé 10 (2012), Exposé 11 (2013)"
+      "company": "Exposé",
+      "title": "Ballistic Publishing - Exposé 9 (2011), Exposé 10 (2012), Exposé 11 (2013)"
     },
     {
-      "company": "3D Total",
-      "title": "Art Fundamentals (2013)"
+      "company": "Art Fundamentals",
+      "title": "3D Total - Art Fundamentals (2013)"
     },
     {
       "company": "EDGE",
-      "title": "Issue 375 (Oct. 2022)"
+      "title": "EDGE Issue 375 (Oct. 2022)"
     },
     {
-      "company": "3D Total",
-      "title": "2DArtist Magazine (2006, 2007, 2008, 2011)"
+      "company": "2DArtist Magazine",
+      "title": "3D Total - 2DArtist Magazine (2006, 2007, 2008, 2011)"
     }
   ],
   "title_education": "Training",
