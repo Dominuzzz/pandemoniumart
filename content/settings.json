@@ -27,6 +27,10 @@
     {
       "label": "Game Art",
       "slug": "game-art"
+    },
+    {
+      "label": "Scavenger",
+      "slug": "scavenger"
     }
   ]
 }
