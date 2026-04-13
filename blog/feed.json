@@ -1,0 +1,27 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Pandemonium Journal",
+    "description": "",
+    "home_page_url": "https://www.pandemoniumart.net/blog",
+    "feed_url": "https://www.pandemoniumart.net/blog/feed.json",
+    "user_comment": "",
+    "author": {
+        "name": "Dominus"
+    },
+    "items": [
+        {
+            "id": "https://www.pandemoniumart.net/blog/this-is-a-test.html",
+            "url": "https://www.pandemoniumart.net/blog/this-is-a-test.html",
+            "title": "This is a Test",
+            "summary": "<p><strong>Test </strong>post test tesfdk smf</p>\n<p><a href=\"https://archive.org/details/@alexandru_negoita\">dfsfsdfssadf</a></p>\n",
+            "content_html": "<p><strong>Test </strong>post test tesfdk smf</p>\n<p><a href=\"https://archive.org/details/@alexandru_negoita\">dfsfsdfssadf</a></p>\n\n<figure class=\"post__image\"><img loading=\"lazy\" src=\"https://www.pandemoniumart.net/blog/media/posts/1/Castelul-din-Hunedoara-cca-1930.jpg\" alt=\"caption\" width=\"2048\" height=\"1363\" sizes=\"(max-width: 1920px) 100vw, 1920px\" srcset=\"https://www.pandemoniumart.net/blog/media/posts/1/responsive/Castelul-din-Hunedoara-cca-1930-xs.jpg 640w ,https://www.pandemoniumart.net/blog/media/posts/1/responsive/Castelul-din-Hunedoara-cca-1930-sm.jpg 768w ,https://www.pandemoniumart.net/blog/media/posts/1/responsive/Castelul-din-Hunedoara-cca-1930-md.jpg 1024w ,https://www.pandemoniumart.net/blog/media/posts/1/responsive/Castelul-din-Hunedoara-cca-1930-lg.jpg 1366w ,https://www.pandemoniumart.net/blog/media/posts/1/responsive/Castelul-din-Hunedoara-cca-1930-xl.jpg 1600w ,https://www.pandemoniumart.net/blog/media/posts/1/responsive/Castelul-din-Hunedoara-cca-1930-2xl.jpg 1920w\">\n<figcaption>Caption</figcaption>\n</figure>\n<p>f sfsd</p>\n<p>f s</p>",
+            "author": {
+                "name": "Dominus"
+            },
+            "tags": [
+            ],
+            "date_published": "2026-04-13T21:46:55+03:00",
+            "date_modified": "2026-04-13T21:46:55+03:00"
+        }
+    ]
+}

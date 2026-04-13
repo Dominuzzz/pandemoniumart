@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
+    <title>Pandemonium Journal</title>
+    <link href="https://www.pandemoniumart.net/blog/feed.xml" rel="self" />
+    <link href="https://www.pandemoniumart.net/blog" />
+    <updated>2026-04-13T21:46:55+03:00</updated>
+    <author>
+        <name>Dominus</name>
+    </author>
+    <id>https://www.pandemoniumart.net/blog</id>
+
+    <entry>
+        <title>This is a Test</title>
+        <author>
+            <name>Dominus</name>
+        </author>
+        <link href="https://www.pandemoniumart.net/blog/this-is-a-test.html"/>
+        <id>https://www.pandemoniumart.net/blog/this-is-a-test.html</id>
+
+        <updated>2026-04-13T21:46:55+03:00</updated>
+            <summary type="html">
+                <![CDATA[
+                    <p><strong>Test </strong>post test tesfdk smf</p>
+<p><a href="https://archive.org/details/@alexandru_negoita">dfsfsdfssadf</a></p>
+
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p><strong>Test </strong>post test tesfdk smf</p>
+<p><a href="https://archive.org/details/@alexandru_negoita">dfsfsdfssadf</a></p>
+
+<figure class="post__image"><img loading="lazy" src="https://www.pandemoniumart.net/blog/media/posts/1/Castelul-din-Hunedoara-cca-1930.jpg" alt="caption" width="2048" height="1363" sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://www.pandemoniumart.net/blog/media/posts/1/responsive/Castelul-din-Hunedoara-cca-1930-xs.jpg 640w ,https://www.pandemoniumart.net/blog/media/posts/1/responsive/Castelul-din-Hunedoara-cca-1930-sm.jpg 768w ,https://www.pandemoniumart.net/blog/media/posts/1/responsive/Castelul-din-Hunedoara-cca-1930-md.jpg 1024w ,https://www.pandemoniumart.net/blog/media/posts/1/responsive/Castelul-din-Hunedoara-cca-1930-lg.jpg 1366w ,https://www.pandemoniumart.net/blog/media/posts/1/responsive/Castelul-din-Hunedoara-cca-1930-xl.jpg 1600w ,https://www.pandemoniumart.net/blog/media/posts/1/responsive/Castelul-din-Hunedoara-cca-1930-2xl.jpg 1920w">
+<figcaption>Caption</figcaption>
+</figure>
+<p>f sfsd</p>
+<p>f s</p>
+            ]]>
+        </content>
+    </entry>
+</feed>

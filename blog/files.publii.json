@@ -1,0 +1,187 @@
+[
+    {
+        "path": "404.html",
+        "type": "file",
+        "md5": "56ae2a67f720dc425cec0696d84390e4"
+    },
+    {
+        "path": "assets",
+        "type": "directory",
+        "md5": false
+    },
+    {
+        "path": "assets/css",
+        "type": "directory",
+        "md5": false
+    },
+    {
+        "path": "/assets/css/editor.css",
+        "type": "file",
+        "md5": "4202808df745f2ac7ab250606fa0d272"
+    },
+    {
+        "path": "/assets/css/main.css",
+        "type": "file",
+        "md5": "62a2f78af0273a34c857fead405f6094"
+    },
+    {
+        "path": "/assets/css/style.css",
+        "type": "file",
+        "md5": "2110fdcc9616a96348b5f5ad11c64055"
+    },
+    {
+        "path": "assets/dynamic",
+        "type": "directory",
+        "md5": false
+    },
+    {
+        "path": "assets/js",
+        "type": "directory",
+        "md5": false
+    },
+    {
+        "path": "/assets/js/scripts.js",
+        "type": "file",
+        "md5": "e66ec016e1abd2297b17a5d038b695b7"
+    },
+    {
+        "path": "/assets/js/scripts.min.js",
+        "type": "file",
+        "md5": "d0fc1030089a37f93a2d51bf6d07565c"
+    },
+    {
+        "path": "/assets/js/svg-fix.js",
+        "type": "file",
+        "md5": "9b7d020c55e2b4f77ab40c97f88f9ff4"
+    },
+    {
+        "path": "/assets/js/svg-map.js",
+        "type": "file",
+        "md5": "ff4392540fcf4c3d3f5e03806e112816"
+    },
+    {
+        "path": "assets/svg",
+        "type": "directory",
+        "md5": false
+    },
+    {
+        "path": "/assets/svg/svg-map.svg",
+        "type": "file",
+        "md5": "cf04dfd5c3cc64e0be44692fe7d976a6"
+    },
+    {
+        "path": "authors",
+        "type": "directory",
+        "md5": false
+    },
+    {
+        "path": "authors/dominus",
+        "type": "directory",
+        "md5": false
+    },
+    {
+        "path": "/authors/dominus/index.html",
+        "type": "file",
+        "md5": "8fca364a560b11ff89e2d278fe6f9f75"
+    },
+    {
+        "path": "feed.json",
+        "type": "file",
+        "md5": "56ccba33ecb3ba97de3cf6dbefe10375"
+    },
+    {
+        "path": "feed.xml",
+        "type": "file",
+        "md5": "a8714427d8a35352b4d298a1a5567d86"
+    },
+    {
+        "path": "index.html",
+        "type": "file",
+        "md5": "d9d40105d9ed6f16b528e37b5cca5b23"
+    },
+    {
+        "path": "media",
+        "type": "directory",
+        "md5": false
+    },
+    {
+        "path": "media/posts",
+        "type": "directory",
+        "md5": false
+    },
+    {
+        "path": "media/posts/1",
+        "type": "directory",
+        "md5": false
+    },
+    {
+        "path": "/media/posts/1/Castelul-din-Hunedoara-cca-1930.jpg",
+        "type": "file",
+        "md5": "60438be02b2083ef7058cee950d6243c"
+    },
+    {
+        "path": "media/posts/1/responsive",
+        "type": "directory",
+        "md5": false
+    },
+    {
+        "path": "/media/posts/1/responsive/Castelul-din-Hunedoara-cca-1930-2xl.jpg",
+        "type": "file",
+        "md5": "4b15fd83b2cb83ffb3bc243ce4c1a0f6"
+    },
+    {
+        "path": "/media/posts/1/responsive/Castelul-din-Hunedoara-cca-1930-lg.jpg",
+        "type": "file",
+        "md5": "c8527a723f2dec46d8226ea922aee2d7"
+    },
+    {
+        "path": "/media/posts/1/responsive/Castelul-din-Hunedoara-cca-1930-md.jpg",
+        "type": "file",
+        "md5": "80cfa254f4d4fb7a79eea1864addb46f"
+    },
+    {
+        "path": "/media/posts/1/responsive/Castelul-din-Hunedoara-cca-1930-sm.jpg",
+        "type": "file",
+        "md5": "3e0cb51b256a0ef182b7c10dc87ab5b4"
+    },
+    {
+        "path": "/media/posts/1/responsive/Castelul-din-Hunedoara-cca-1930-xl.jpg",
+        "type": "file",
+        "md5": "bc955be80b50b39467affd7d4a370234"
+    },
+    {
+        "path": "/media/posts/1/responsive/Castelul-din-Hunedoara-cca-1930-xs.jpg",
+        "type": "file",
+        "md5": "0e8bbdfa51421fb5cd8fee027777b6be"
+    },
+    {
+        "path": "robots.txt",
+        "type": "file",
+        "md5": "2cc66685305b583a514eb96bc59f5d97"
+    },
+    {
+        "path": "sitemap.xml",
+        "type": "file",
+        "md5": "ef1504a9cfa018354cd3937750e7a433"
+    },
+    {
+        "path": "sitemap.xsl",
+        "type": "file",
+        "md5": "03c2f9a7fdcc46ff05c435907614a0b8"
+    },
+    {
+        "path": "tags",
+        "type": "directory",
+        "md5": false
+    },
+    {
+        "path": "/tags/index.html",
+        "type": "file",
+        "md5": "3f3c61336629899b288320f2b80f77c4"
+    },
+    {
+        "path": "this-is-a-test.html",
+        "type": "file",
+        "md5": "f7e4a4cc7b94e588b460ed578669163e"
+    }
+]
