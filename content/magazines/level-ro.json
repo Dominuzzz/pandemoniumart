@@ -1,0 +1,23 @@
+{
+  "title": "LEVEL (RO)",
+  "notes": "Romanian LEVEL magazine",
+  "years": [
+    {
+      "year": "1997",
+      "issues": [
+        {
+          "cover": "/images/level01.jpg",
+          "issue_label": "001 / September 1997",
+          "collected": false,
+          "notes": "[PDF](https://archive.org/details/Level01sep-1997)"
+        },
+        {
+          "cover": "/images/level01.jpg",
+          "issue_label": "002 / October 1997",
+          "collected": true,
+          "notes": "CD\nPDF"
+        }
+      ]
+    }
+  ]
+}
