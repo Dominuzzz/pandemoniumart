@@ -218,3 +218,84 @@ collections:
           name: "image"
           label: "Image"
           widget: "image"
+
+  - name: "magazine_settings"
+    label: "Magazines Index Settings"
+    editor:
+      preview: false
+    files:
+      - file: "content/magazine_settings.json"
+        label: "Magazine Setup & Order"
+        name: "magazine_index"
+        fields:
+          - name: "page_title"
+            label: "Index Title"
+            widget: "string"
+            default: "Magazine Collection"
+          - name: "title_size"
+            label: "Title Font Size"
+            widget: "string"
+            default: "48px"
+          - name: "list_size"
+            label: "List Item Font Size"
+            widget: "string"
+            default: "24px"
+          - name: "magazine_order"
+            label: "Magazine Display Order"
+            widget: "list"
+            summary: "{{label}}"
+            fields:
+              - name: "label"
+                label: "Display Name"
+                widget: "string"
+              - name: "slug"
+                label: "Select Magazine"
+                widget: "relation"
+                collection: "magazines"
+                search_fields: ["title"]
+                value_field: "{{slug}}"
+                display_fields: ["title"]
+
+  - name: "magazines"
+    label: "Magazines (Archive)"
+    folder: "content/magazines"
+    create: true
+    slug: "{{slug}}"
+    extension: "json"
+    format: "json"
+    fields:
+      - name: "title"
+        label: "Magazine Name"
+        widget: "string"
+      - name: "notes"
+        label: "Global Description / Notes"
+        widget: "markdown"
+        required: false
+      - name: "years"
+        label: "Publication Years"
+        widget: "list"
+        summary: "{{year}}"
+        fields:
+          - name: "year"
+            label: "Year (e.g., 1997)"
+            widget: "string"
+          - name: "issues"
+            label: "Issues for this Year"
+            widget: "list"
+            summary: "{{issue_label}}"
+            fields:
+              - name: "cover"
+                label: "Cover Image"
+                widget: "image"
+                required: false
+              - name: "issue_label"
+                label: "Issue Number & Date (e.g., #02 / January 1997)"
+                widget: "string"
+              - name: "collected"
+                label: "Collected? (Checked = Green Background)"
+                widget: "boolean"
+                default: false
+              - name: "notes"
+                label: "Issue Notes/Links"
+                widget: "markdown"
+                required: false
