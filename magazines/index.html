@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive Index</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'DM Sans', sans-serif; background-color: #3f3f3f; color: #fff; }
+        .mag-link { display: block; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-weight: 700; transition: color 0.3s; }
+        .mag-link:hover { color: #a3e635; }
+    </style>
+</head>
+<body class="p-12 md:p-24">
+
+    <div class="max-w-4xl mx-auto">
+        <h1 id="page-title" class="font-black uppercase tracking-tighter mb-12"></h1>
+        <div id="mag-list" class="flex flex-col"></div>
+    </div>
+
+    <script>
+        async function loadIndex() {
+            const cacheBust = '?v=' + Date.now();
+            try {
+                const setRes = await fetch('../content/magazine_settings.json' + cacheBust);
+                const settings = await setRes.json();
+                
+                const titleEl = document.getElementById('page-title');
+                titleEl.innerText = settings.page_title || "Archive";
+                titleEl.style.fontSize = settings.title_size || "48px";
+                
+                const listEl = document.getElementById('mag-list');
+                const listSize = settings.list_size || "24px";
+
+                if (settings.magazine_order) {
+                    for (const mag of settings.magazine_order) {
+                        const slug = mag.slug.toLowerCase();
+                        listEl.innerHTML += `<a href="view.html?id=${slug}" class="mag-link" style="font-size: ${listSize}">${mag.label || slug}</a>`;
+                    }
+                }
+            } catch (e) { console.error("Failed to load index.", e); }
+        }
+        document.addEventListener("DOMContentLoaded", loadIndex);
+    </script>
+</body>
+</html>
