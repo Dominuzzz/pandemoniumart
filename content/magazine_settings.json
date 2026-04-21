@@ -1,0 +1,11 @@
+{
+  "page_title": "Magazine Collection",
+  "title_size": "48px",
+  "list_size": "24px",
+  "magazine_order": [
+    {
+      "label": "LEVEL (RO)",
+      "slug": "level-ro"
+    }
+  ]
+}
