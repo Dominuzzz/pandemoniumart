@@ -1,0 +1,15 @@
+{
+  "title": "Cover Art Design",
+  "company": "Books | Music | Key Art",
+  "thumbnail": "/images/mediacoverart.jpg",
+  "body": "Various media projects, from key art design to music or book covers.",
+  "font_size": 16,
+  "gallery": [
+    "/images/cover_portfolio.webp",
+    "/images/razorbook2.webp",
+    "/images/dunespice.jpg",
+    "/images/thiefparade.webp",
+    "/images/gloomwoodart.webp",
+    "/images/DSO_V2 D.jpg"
+  ]
+}
