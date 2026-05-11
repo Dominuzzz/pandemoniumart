@@ -39,6 +39,10 @@
     {
       "label": "Cover Art Design",
       "slug": "cover-art-design"
+    },
+    {
+      "label": "Inktober",
+      "slug": "inktober"
     }
   ]
 }
