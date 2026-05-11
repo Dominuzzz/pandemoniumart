@@ -1,0 +1,23 @@
+{
+  "title": "Inktober",
+  "company": "Pencis and Ink",
+  "thumbnail": "/images/ink.jpg",
+  "body": "",
+  "font_size": 18,
+  "gallery": [
+    "/images/09.jpg",
+    "/images/15.jpg",
+    "/images/17.jpg",
+    "/images/01.jpg",
+    "/images/07.jpg",
+    "/images/02.jpg",
+    "/images/03.jpg",
+    "/images/04.jpg",
+    "/images/08.jpg",
+    "/images/armour.jpg",
+    "/images/armour2.jpg",
+    "/images/gloves.jpg",
+    "/images/dagger2.jpg",
+    "/images/dagger.jpg"
+  ]
+}
